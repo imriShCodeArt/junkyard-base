@@ -22,7 +22,6 @@ import Context from './Context'
  */
 
 const Drawer = ({ children }: { children: ReactNode }) => {
-  const R = React
   const theme = useTheme()
   const { direction } = theme || {}
   const [anchor, setAnchor] = useState<Anchor>(
@@ -36,8 +35,8 @@ const Drawer = ({ children }: { children: ReactNode }) => {
   const openDrawer = (
     content: ReactNode,
     anchor: 'left' | 'right' | 'top' | 'bottom' = 'right',
-    width: number = 80,
-    backdropClickClose: boolean = true,
+    width = 70,
+    backdropClickClose = true,
   ) => {
     setContent(content)
     anchor && setAnchor(anchor)
@@ -70,11 +69,21 @@ const Drawer = ({ children }: { children: ReactNode }) => {
     <Context.Provider value={{ ...drawerValue.actions, ...drawerValue.state }}>
       {children}
       <Root
-        keepMounted
+        data-testid="drawer"
         onClose={closeDrawer}
         open={open}
         anchor={anchor}
-        PaperProps={{ sx: { width: `${width}%` } }}
+        PaperProps={{
+          sx: { width: `${width}%` },
+          //@ts-expect-error: Does in fact working, also it only serves for testing.
+          'data-testid': 'drawer-paper',
+        }}
+        ModalProps={{
+          BackdropProps: {
+            //@ts-expect-error: Does in fact working, also it only serves for testing.
+            'data-testid': 'backdrop',
+          },
+        }}
       >
         <Fab
           color="default"
@@ -90,7 +99,11 @@ const Drawer = ({ children }: { children: ReactNode }) => {
           size={'small'}
           onClick={closeDrawer}
         >
-          <Close color="success" sx={{ mb: '-.3em' }} />
+          <Close
+            data-testid="closeButton"
+            color="success"
+            sx={{ mb: '-.3em' }}
+          />
         </Fab>
         {content}
       </Root>
