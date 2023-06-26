@@ -5,9 +5,9 @@
   "main": "lib/index.tsx",
   "scripts": {
     "prepare": "husky install",
-    "start": "webpack serve --open",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development",
+    "start": "webpack serve --open --mode development",
+    "test": "jest",
+    "publish": "npm publish",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "engines": {
@@ -37,7 +37,8 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.5",
-    "@mui/styles": "^5.13.2"
+    "@mui/styles": "^5.13.2",
+    "@types/react-dom": "^18.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.5",
@@ -60,6 +61,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-storybook": "^0.6.12",
+    "html-webpack-plugin": "^5.5.3",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "prop-types": "15.8.1",
