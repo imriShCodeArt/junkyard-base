@@ -20,5 +20,5 @@
       "@/context/*": ["./src/context/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "dev"]
 }

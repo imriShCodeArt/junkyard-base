@@ -7,7 +7,7 @@ module.exports = (env, options) => {
   const isProduction = options.mode === 'production'
 
   return {
-    entry: './src/index.tsx',
+    entry: './dev/index.tsx',
     module: {
       rules: [
         {
@@ -44,7 +44,7 @@ module.exports = (env, options) => {
     ],
     devServer: {
       static: {
-        directory: path.resolve(__dirname, 'src'),
+        directory: path.resolve(__dirname, 'dev'),
       },
       hot: true,
     },
