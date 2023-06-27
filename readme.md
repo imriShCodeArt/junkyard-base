@@ -8,8 +8,7 @@
 npm install junkyard-ui
 ```
 
-<br/>
-or<br/>
+or
 
 ```javascript
 yarn add junkyard-ui
@@ -42,12 +41,17 @@ import { AppShell, useDrawerContext } from 'junkyard-ui'
 <p>You can access the state and actions related to the Drawer using the useDrawerContext hook:</p>
 
 ```javascript
-
-const {<br/>
-    state: { anchor, content, isOpen, width, backdropClickClose },<br/>
-    actions: { openDrawer, closeDrawer, setWidth, setContent, setAnchor, setBackdropClickClose },<br/>
-} = useDrawerContext();
-
+const {
+  state: { anchor, content, isOpen, width, backdropClickClose },
+  actions: {
+    openDrawer,
+    closeDrawer,
+    setWidth,
+    setContent,
+    setAnchor,
+    setBackdropClickClose,
+  },
+} = useDrawerContext()
 ```
 
 <h3>Actions</h3>
@@ -76,26 +80,34 @@ const {<br/>
 <p>Here's an example of how to use the AppShell and its context in your application:</p>
 
 ```javascript
+import { Button } from '@mui/material'
+import { AppShell, useDrawerContext } from 'junkyard-ui'
 
-import { Button } from '@mui/material';<br/>
-import { AppShell, useDrawerContext } from 'junkyard-ui';<br/>
-<br/>
-function MyComponent() {<br/>
-    const { actions: { openDrawer } } = useDrawerContext();<br/>
-<br/>
-    return (<br/>
-        <Button onClick={() => openDrawer(<div>Hello, World!</div>)}>Open Drawer</Button><br/>
-    );<br/>
-}<br/>
-<br/>
-function MyApp() {<br/>
-    return (<br/>
-        <AppShell drawer={{/* your drawer config here */}}><br/>
-            <MyComponent /><br/>
-        </AppShell><br/>
-    );<br/>
-}<br/>
+function MyComponent() {
+  const {
+    actions: { openDrawer },
+  } = useDrawerContext()
 
+  return (
+    <Button onClick={() => openDrawer(<div>Hello, World!</div>)}>
+      Open Drawer
+    </Button>
+  )
+}
+
+function MyApp() {
+  return (
+    <AppShell
+      drawer={
+        {
+          /* your drawer config here */
+        }
+      }
+    >
+      <MyComponent />
+    </AppShell>
+  )
+}
 ```
 
 <p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
