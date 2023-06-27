@@ -4,25 +4,32 @@
 
 <p>First, you'll need to install the package into your project. You can do this using npm or yarn:</p>
 
-<code>npm install junkyard-ui</code><br/>
+````javascript
+npm install junkyard-ui```
+<br/>
 or<br/>
-<code>yarn add junkyard-ui</code>
+```javascript
+yarn add junkyard-ui```
+
 
 <h2>Importing Components</h2>
 
 <p>You can import the required components from the package as follows:</p>
 
-<code>import { AppShell, useDrawerContext } from 'junkyard-ui';</code>
+```javascript
+import { AppShell, useDrawerContext } from 'junkyard-ui';```
+
 
 <h2>Using the AppShell Component</h2>
 
 <p>The AppShell component in this package is a context provider component. It contains the Drawer component and accepts a configuration object via its drawer prop:</p>
 
-<code>
+```javascript
+
 &lt;AppShell drawer={drawerConfig}&gt;<br/>
     {/* Your app code goes here */}<br/>
 &lt;/AppShell&gt;
-</code>
+````
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
 
@@ -30,12 +37,13 @@ or<br/>
 
 <p>You can access the state and actions related to the Drawer using the useDrawerContext hook:</p>
 
-<code>
+```javascript
+
 const {<br/>
     state: { anchor, content, isOpen, width, backdropClickClose },<br/>
     actions: { openDrawer, closeDrawer, setWidth, setContent, setAnchor, setBackdropClickClose },<br/>
 } = useDrawerContext();
-</code>
+```
 
 <h3>Actions</h3>
 
@@ -62,7 +70,8 @@ const {<br/>
 
 <p>Here's an example of how to use the AppShell and its context in your application:</p>
 
-<code>
+```javascript
+
 import { Button } from '@mui/material';<br/>
 import { AppShell, useDrawerContext } from 'junkyard-ui';<br/>
 <br/>
@@ -81,7 +90,7 @@ function MyApp() {<br/>
         &lt;/AppShell&gt;<br/>
     );<br/>
 }<br/>
-</code>
+```
 
 <p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
 
