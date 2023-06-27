@@ -4,21 +4,23 @@
 
 <p>First, you'll need to install the package into your project. You can do this using npm or yarn:</p>
 
-````javascript
-npm install junkyard-ui```
+```javascript
+npm install junkyard-ui
+```
+
 <br/>
 or<br/>
 ```javascript
-yarn add junkyard-ui```
-
+yarn add junkyard-ui
+```
 
 <h2>Importing Components</h2>
 
 <p>You can import the required components from the package as follows:</p>
 
 ```javascript
-import { AppShell, useDrawerContext } from 'junkyard-ui';```
-
+import { AppShell, useDrawerContext } from 'junkyard-ui'
+```
 
 <h2>Using the AppShell Component</h2>
 
@@ -29,7 +31,8 @@ import { AppShell, useDrawerContext } from 'junkyard-ui';```
 &lt;AppShell drawer={drawerConfig}&gt;<br/>
     {/* Your app code goes here */}<br/>
 &lt;/AppShell&gt;
-````
+
+```
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
 
@@ -43,6 +46,7 @@ const {<br/>
     state: { anchor, content, isOpen, width, backdropClickClose },<br/>
     actions: { openDrawer, closeDrawer, setWidth, setContent, setAnchor, setBackdropClickClose },<br/>
 } = useDrawerContext();
+
 ```
 
 <h3>Actions</h3>
@@ -90,6 +94,7 @@ function MyApp() {<br/>
         &lt;/AppShell&gt;<br/>
     );<br/>
 }<br/>
+
 ```
 
 <p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
