@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ContextProviders } from '@/src'
 import { createRoot } from 'react-dom/client'
+import { AppShell } from '../src'
 
 const element = document.getElementById('container')
 
@@ -13,8 +13,8 @@ const root = createRoot(element)
 
 root.render(
   <div>
-    <ContextProviders>
+    <AppShell>
       <>HELLO</>
-    </ContextProviders>
+    </AppShell>
   </div>,
 )
