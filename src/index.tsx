@@ -1,3 +1,4 @@
+import { useDialogContext } from 'context/Dialog'
 import { ReactNode } from 'react'
 import DrawerProvider, { useDrawerContext } from './context/Drawer'
 
@@ -6,5 +7,6 @@ export const AppShell = ({ children }: { children: ReactNode }) => {
 }
 
 const drawerContext = useDrawerContext
+const dialogContext = useDialogContext
 
-export { drawerContext }
+export { dialogContext, drawerContext }
