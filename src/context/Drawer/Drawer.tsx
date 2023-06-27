@@ -1,13 +1,12 @@
 // src/context/Drawer/Drawer.tsx
-import React from 'react'
 
-import { Anchor } from '@/types'
 import Close from '@mui/icons-material/CloseOutlined'
 import Root from '@mui/material/Drawer'
 import Fab from '@mui/material/Fab'
 import { useTheme } from '@mui/system'
 import { ReactNode, useState } from 'react'
-import Context from './Context'
+import { Anchor } from '../../types'
+import DrawerContext from './Context'
 
 /**
  * This is a customizable Drawer component.
@@ -66,7 +65,9 @@ const Drawer = ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <Context.Provider value={{ ...drawerValue.actions, ...drawerValue.state }}>
+    <DrawerContext.Provider
+      value={{ ...drawerValue.actions, ...drawerValue.state }}
+    >
       {children}
       <Root
         data-testid="drawer"
@@ -107,7 +108,7 @@ const Drawer = ({ children }: { children: ReactNode }) => {
         </Fab>
         {content}
       </Root>
-    </Context.Provider>
+    </DrawerContext.Provider>
   )
 }
 
