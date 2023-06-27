@@ -27,11 +27,7 @@ import { AppShell, useDrawerContext } from 'junkyard-ui'
 <p>The AppShell component in this package is a context provider component. It contains the Drawer component and accepts a configuration object via its drawer prop:</p>
 
 ```javascript
-<AppShell drawer={drawerConfig}>
-  <br />
-  {/* Your app code goes here */}
-  <br />
-</AppShell>
+<AppShell drawer={drawerConfig}>{/* Your app code goes here */}</AppShell>
 ```
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
