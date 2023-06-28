@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { DialogActions, DialogState } from '.'
+import { DialogActions, DialogState } from './types'
 
 const Context = createContext<{
   state: DialogState

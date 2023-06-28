@@ -1,12 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
-
-import Context from './Context'
-
-export { default } from './Dialog'
-
-export function useDialogContext() {
-  return useContext(Context)
-}
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 export interface DialogState {
   open: boolean

@@ -4,10 +4,9 @@ import { ReactNode, useState } from 'react'
 
 import Context from './Context'
 
-import Close from '@mui/icons-material/CloseOutlined'
-import Root from '@mui/material/Dialog'
-import Fab from '@mui/material/Fab'
-import { DialogActions, DialogState } from '.'
+import { DialogActions, DialogState } from './types'
+import CloseDialogButton from './ui/CloseDialogButton'
+import DialogRoot from './ui/DialogRoot'
 
 const Dialog = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState(false)
@@ -60,42 +59,10 @@ const Dialog = ({ children }: { children: ReactNode }) => {
   return (
     <Context.Provider value={{ state, actions }}>
       {children}
-      <Root
-        open={open}
-        fullWidth
-        fullScreen={fullScreen}
-        maxWidth={false}
-        scroll={scroll}
-        onClose={backdropClickClose ? closeDialog : undefined}
-        PaperProps={{
-          sx: { width: `${width}%`, minHeight: { xs: '100vh', md: 'auto' } },
-        }}
-        slotProps={{
-          backdrop: {
-            //@ts-expect-error: Does in fact working, also it only serves for testing.
-            'data-testid': 'backdrop',
-          },
-        }}
-      >
-        <Fab
-          color="default"
-          sx={{
-            display: open ? 'block' : 'none',
-            position: 'fixed',
-            zIndex: 9999,
-            top: '2.45em',
-            right: '.75em',
-            width: '2.5em',
-            height: '2.5em',
-            bgcolor: (theme) => `${theme.palette.grey[300]}95`,
-          }}
-          size="small"
-          onClick={closeDialog}
-        >
-          <Close color="success" sx={{ mb: '-.3em' }} />
-        </Fab>
-        {content}
-      </Root>
+      <DialogRoot state={state} closeDialog={closeDialog}>
+        <CloseDialogButton open={state.open} closeDialog={closeDialog} />
+        {state.content}
+      </DialogRoot>
     </Context.Provider>
   )
 }
