@@ -9,10 +9,10 @@
 ```javascript
 <!-- Example usage of openDrawer function -->
 openDrawer(
-  <div>Your Content Here</div>, // content
-  'right', // anchor position
-  70, // width
-  true // backdropClickClose
+  <div>Your Content Here</div>, // content  DEFAULT: NavBar
+  'right', // OPTIONAL: anchor position     DEFAULT: 'left'
+  70, // OPTIONAL: width                    DEFAULT: 70
+  false // OPTIONAL: backdropClickClose      DEFAULT: true
 )
 ```
 
