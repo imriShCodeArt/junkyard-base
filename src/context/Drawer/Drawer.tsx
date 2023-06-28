@@ -63,11 +63,9 @@ const Drawer = ({ children }: { children: ReactNode }) => {
       setBackdropClickClose,
     },
   }
-
+  const { state, actions } = drawerValue
   return (
-    <DrawerContext.Provider
-      value={{ ...drawerValue.actions, ...drawerValue.state }}
-    >
+    <DrawerContext.Provider value={{ actions, state }}>
       {children}
       <Root
         data-testid="drawer"
