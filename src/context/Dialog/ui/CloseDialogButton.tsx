@@ -2,15 +2,15 @@ import Close from '@mui/icons-material/CloseOutlined'
 import Fab from '@mui/material/Fab'
 
 interface CloseDialogButtonProps {
-  open: boolean
+  isOpen: boolean
   closeDialog: () => void
 }
 
-const CloseDialogButton = ({ open, closeDialog }: CloseDialogButtonProps) => (
+const CloseDialogButton = ({ isOpen, closeDialog }: CloseDialogButtonProps) => (
   <Fab
     color="default"
     sx={{
-      display: open ? 'block' : 'none',
+      display: isOpen ? 'block' : 'none',
       position: 'fixed',
       zIndex: 9999,
       top: '2.45em',

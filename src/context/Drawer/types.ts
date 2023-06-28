@@ -1,17 +1,7 @@
-// src/context/Drawer/index.tsx:
-
-import { Dispatch, ReactNode, SetStateAction, useContext } from 'react'
-
-import Context from './Context'
-
-export { default } from './Drawer'
-
-export function useDrawerContext() {
-  return useContext(Context)
-}
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 export interface DrawerState {
-  open: boolean
+  isOpen: boolean
   content: ReactNode
   anchor?: 'left' | 'right' | 'top' | 'bottom'
   width?: number
@@ -31,3 +21,15 @@ export interface DrawerActions {
   setAnchor?: Dispatch<SetStateAction<'left' | 'right' | 'top' | 'bottom'>>
   setBackdropClickClose?: Dispatch<SetStateAction<boolean>>
 }
+
+export type CloseDrawerButtonProps = () => void
+
+export interface DrawerRootProps {
+  anchor: Anchor
+  isOpen: boolean
+  width: number
+  closeDrawer: () => void
+  children: ReactNode
+}
+
+export type Anchor = 'left' | 'right' | 'top' | 'bottom'

@@ -1,9 +1,8 @@
 // src/components/CloseDrawerButton.tsx
 import Close from '@mui/icons-material/CloseOutlined'
 import Fab from '@mui/material/Fab'
+import { CloseDrawerButtonProps } from '../types'
 // import { useTheme } from '@mui/system'
-
-type CloseDrawerButtonProps = () => void
 
 const CloseDrawerButton = ({
   closeDrawer,

@@ -1,7 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react'
 
 export interface DialogState {
-  open: boolean
+  isOpen: boolean
   content: ReactNode
   width?: number // This can be used to set the width of the Paper in percent
   fullScreen?: boolean

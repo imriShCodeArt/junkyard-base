@@ -5,7 +5,7 @@ import CloseDialogButton from './ui/CloseDialogButton'
 import DialogRoot from './ui/DialogRoot'
 
 const Dialog = ({ children }: { children: ReactNode }) => {
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [content, setContent] = useState<ReactNode>(<></>)
   const [width, setWidth] = useState(80)
   const [fullScreen, setFullScreen] = useState(false)
@@ -33,16 +33,16 @@ const Dialog = ({ children }: { children: ReactNode }) => {
     if (newScroll !== undefined) setScroll(newScroll)
     if (newBackdropClickClose !== undefined)
       setBackdropClickClose(newBackdropClickClose)
-    setOpen(true)
+    setIsOpen(true)
   }
 
   const closeDialog = () => {
-    setOpen(false)
+    setIsOpen(false)
     setContent(<></>)
   }
 
   const state: DialogState = {
-    open,
+    isOpen,
     content,
     width,
     fullScreen,
@@ -64,7 +64,7 @@ const Dialog = ({ children }: { children: ReactNode }) => {
     <Context.Provider value={{ state, actions }}>
       {children}
       <DialogRoot state={state} closeDialog={closeDialog}>
-        <CloseDialogButton open={state.open} closeDialog={closeDialog} />
+        <CloseDialogButton isOpen={isOpen} closeDialog={closeDialog} />
         {state.content}
       </DialogRoot>
     </Context.Provider>

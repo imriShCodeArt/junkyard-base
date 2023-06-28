@@ -1,9 +1,10 @@
-// src/context/Drawer/Drawer.tsx
+// (...)/Drawer/Drawer.tsx
+import { ReactNode, useState } from 'react'
 
 import { useTheme } from '@mui/system'
-import { ReactNode, useState } from 'react'
-import { Anchor } from '../../types'
 import DrawerContext from './Context'
+import { Anchor } from './types'
+
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
 
@@ -26,7 +27,7 @@ const Drawer = ({ children }: { children: ReactNode }) => {
     direction === 'rtl' ? 'left' : 'right',
   )
   const [content, setContent] = useState<ReactNode>()
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [width, setWidth] = useState(80)
   const [backdropClickClose, setBackdropClickClose] = useState(true)
 
@@ -40,16 +41,16 @@ const Drawer = ({ children }: { children: ReactNode }) => {
     anchor && setAnchor(anchor)
     setWidth(width)
     backdropClickClose && setBackdropClickClose(backdropClickClose)
-    setOpen(true)
+    setIsOpen(true)
   }
 
-  const closeDrawer = () => setOpen(false)
+  const closeDrawer = () => setIsOpen(false)
 
   const drawerValue = {
     state: {
       anchor,
       content,
-      open,
+      isOpen,
       width,
       backdropClickClose,
     },
@@ -68,7 +69,7 @@ const Drawer = ({ children }: { children: ReactNode }) => {
       {children}
       <DrawerRoot
         anchor={anchor}
-        open={open}
+        isOpen={isOpen}
         width={width}
         closeDrawer={closeDrawer}
       >

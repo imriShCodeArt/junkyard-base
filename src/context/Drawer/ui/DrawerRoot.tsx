@@ -1,19 +1,10 @@
 // src/components/DrawerRoot.tsx
 import Root from '@mui/material/Drawer'
-import { ReactNode } from 'react'
-import { Anchor } from 'types'
-
-interface DrawerRootProps {
-  anchor: Anchor
-  open: boolean
-  width: number
-  closeDrawer: () => void
-  children: ReactNode
-}
+import { DrawerRootProps } from '../types'
 
 const DrawerRoot = ({
   anchor,
-  open,
+  isOpen,
   width,
   closeDrawer,
   children,
@@ -22,7 +13,7 @@ const DrawerRoot = ({
     <Root
       data-testid="drawer"
       onClose={closeDrawer}
-      open={open}
+      open={isOpen}
       anchor={anchor}
       PaperProps={{
         sx: { width: `${width}%` },

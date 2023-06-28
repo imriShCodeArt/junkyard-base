@@ -4,7 +4,7 @@ export default {
     width: 70,
     backdropClickClose: true,
     content: null,
-    open: false,
+    isOpen: false,
     PaperProps: {},
     ModalProps: {},
     sx: {},

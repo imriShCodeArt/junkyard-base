@@ -1,6 +1,6 @@
 import Root from '@mui/material/Dialog'
-import { DialogState } from 'context/Dialog/types'
 import { ReactNode } from 'react'
+import { DialogState } from '../types'
 
 interface DialogRootProps {
   state: DialogState
@@ -10,7 +10,7 @@ interface DialogRootProps {
 
 const DialogRoot = ({ state, children, closeDialog }: DialogRootProps) => (
   <Root
-    open={state.open}
+    open={state.isOpen}
     fullWidth
     fullScreen={state.fullScreen}
     maxWidth={false}
