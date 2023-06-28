@@ -1,5 +1,8 @@
 import { createContext } from 'react'
-import { DialogContextType } from '.'
+import { DialogActions, DialogState } from '.'
 
-const Context = createContext<DialogContextType | null>(null)
+const Context = createContext<{
+  state: DialogState
+  actions: DialogActions
+} | null>(null)
 export default Context
