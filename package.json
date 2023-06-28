@@ -12,8 +12,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "prebuild": "jest && rimraf ./lib",
-    "build": "tsc",
+    "prebuild": "rimraf ./lib",
+    "build": "tsc && jest",
     "start": "webpack serve --open --mode development",
     "test": "jest",
     "publish": "npm publish",
