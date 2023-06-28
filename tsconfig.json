@@ -25,6 +25,6 @@
     "types": ["react"],
     "declaration": true
   },
-  "include": ["src", "dev", "src/types.ts"],
+  "include": ["src", "dev"],
   "exclude": ["node_modules", "dist", "webpack.config.js", "dev"]
 }
