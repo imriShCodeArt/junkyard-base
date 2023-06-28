@@ -18,7 +18,7 @@ export interface DialogActions {
     backdropClickClose?: boolean,
   ) => void
   closeDialog: () => void
-  setWidth?: Dispatch<SetStateAction<number>>
+  setWidth?: (width: number) => void
   setMaxWidth?: Dispatch<SetStateAction<'xs' | 'sm' | 'md' | 'lg' | 'xl'>>
   setContent?: Dispatch<SetStateAction<ReactNode>>
   setFullScreen?: Dispatch<SetStateAction<boolean>>

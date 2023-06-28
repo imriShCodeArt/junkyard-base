@@ -1,9 +1,5 @@
-// components/shell/contexts/Dialog/Dialog
-
 import { ReactNode, useState } from 'react'
-
 import Context from './Context'
-
 import { DialogActions, DialogState } from './types'
 import CloseDialogButton from './ui/CloseDialogButton'
 import DialogRoot from './ui/DialogRoot'
@@ -16,6 +12,14 @@ const Dialog = ({ children }: { children: ReactNode }) => {
   const [scroll, setScroll] = useState<'paper' | 'body'>('paper')
   const [backdropClickClose, setBackdropClickClose] = useState(true)
 
+  const validatedSetWidth = (value: number) => {
+    if (value >= 0 && value <= 100) {
+      setWidth(value)
+    } else {
+      throw new Error('Width must be between 0 and 100')
+    }
+  }
+
   const openDialog = (
     newContent: ReactNode,
     newWidth?: number,
@@ -24,7 +28,7 @@ const Dialog = ({ children }: { children: ReactNode }) => {
     newBackdropClickClose?: boolean,
   ) => {
     setContent(newContent)
-    if (newWidth !== undefined) setWidth(newWidth)
+    if (newWidth !== undefined) validatedSetWidth(newWidth)
     if (newFullScreen !== undefined) setFullScreen(newFullScreen)
     if (newScroll !== undefined) setScroll(newScroll)
     if (newBackdropClickClose !== undefined)
@@ -50,7 +54,7 @@ const Dialog = ({ children }: { children: ReactNode }) => {
     openDialog,
     closeDialog,
     setContent,
-    setWidth,
+    setWidth: validatedSetWidth,
     setFullScreen,
     setScroll,
     setBackdropClickClose,
