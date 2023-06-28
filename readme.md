@@ -2,33 +2,40 @@
 <h2>Installation</h2> 
 <p>First, you'll need to install the package into your project. You can do this using npm or yarn:</p>
 
-<pre><code class="javascript">npm install junkyard-ui</code></pre>
+`javascriptnpm install junkyard-ui`
 
 or
 
-<pre><code class="javascript">yarn add junkyard-ui</code></pre>
+`javascriptyarn add junkyard-ui`
 
 <h2>Importing Components</h2> 
 <p>You can import the required components from the package as follows:</p>
 
-<pre><code class="javascript">import { AppShell, useDrawerContext } from 'junkyard-ui'</code></pre>
+`javascriptimport { AppShell, useDrawerContext } from 'junkyard-ui'`
 
 <h2>Using the AppShell Component</h2> 
 <p>The AppShell component in this package is a context provider component. It contains the Drawer component and accepts a configuration object via its config prop:</p>
 
-<code class="javascript"><AppShell config={config}>{/_ Your app code goes here _/}</AppShell></code>
+`javascript<AppShell config={config}>{/* Your app code goes here */}</AppShell>`
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
 
 <h2>Accessing Drawer Context</h2> 
 <p>You can access the state and actions related to the Drawer using the useDrawerContext hook:</p>
 
-<pre><code class="javascript">
-const { 
-  state: { anchor, content, isOpen, width, backdropClickClose }, 
-  actions: { openDrawer, closeDrawer, setWidth, setContent, setAnchor, setBackdropClickClose },
+```javascript
+const {
+  state: { anchor, content, isOpen, width, backdropClickClose },
+  actions: {
+    openDrawer,
+    closeDrawer,
+    setWidth,
+    setContent,
+    setAnchor,
+    setBackdropClickClose,
+  },
 } = useDrawerContext()
-</code></pre>
+```
 
 <h3>Actions</h3> 
 <ul> 
@@ -52,12 +59,14 @@ const {
 <h2>Example</h2> 
 <p>Here's an example of how to use the AppShell and its context in your application:</p>
 
-<pre><code class="javascript">
+```javascript
 import { Button } from '@mui/material'
 import { AppShell, useDrawerContext } from 'junkyard-ui'
 
 function MyComponent() {
-  const { actions: { openDrawer }, } = useDrawerContext()
+  const {
+    actions: { openDrawer },
+  } = useDrawerContext()
   return (
     <Button onClick={() => openDrawer(<div>Hello, World!</div>)}>
       Open Drawer
@@ -67,12 +76,18 @@ function MyComponent() {
 
 function MyApp() {
   return (
-    <AppShell config={ { /* your drawer config here */ } } >
+    <AppShell
+      config={
+        {
+          /* your drawer config here */
+        }
+      }
+    >
       <MyComponent />
     </AppShell>
   )
 }
-</code></pre>
+```
 
 <p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p> 
 <p>Remember to replace {/* your drawer config here */} with your actual drawer configuration.</p>
