@@ -6,15 +6,15 @@
 <h2>Configuration</h2>
 <p>The Drawer component is primarily configured through the use of the openDrawer function, which allows for the setting of the content, anchor position, width, and a flag to close the drawer when clicking on the backdrop. </p>
 
-<pre><code class="html">
-&lt;!-- Example usage of openDrawer function --&gt;
+```javascript
+<!-- Example usage of openDrawer function -->
 openDrawer(
-  &lt;div&gt;Your Content Here&lt;/div&gt;, // content
+  <div>Your Content Here</div>, // content
   'right', // anchor position
   70, // width
   true // backdropClickClose
 )
-</code></pre>
+```
 
 <h2>Design</h2>
 <p>Design of the Drawer and its different parts can be controlled using the 'sx', 'PaperProps' and similar props. These props accept Material-UI styling objects, allowing for a wide range of customization options.</p>
