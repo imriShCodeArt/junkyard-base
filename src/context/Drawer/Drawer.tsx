@@ -1,12 +1,11 @@
 // src/context/Drawer/Drawer.tsx
 
-import Close from '@mui/icons-material/CloseOutlined'
-import Root from '@mui/material/Drawer'
-import Fab from '@mui/material/Fab'
 import { useTheme } from '@mui/system'
 import { ReactNode, useState } from 'react'
 import { Anchor } from '../../types'
 import DrawerContext from './Context'
+import CloseDrawerButton from './ui/CloseDrawerButton'
+import DrawerRoot from './ui/DrawerRoot'
 
 /**
  * This is a customizable Drawer component.
@@ -67,45 +66,15 @@ const Drawer = ({ children }: { children: ReactNode }) => {
   return (
     <DrawerContext.Provider value={{ actions, state }}>
       {children}
-      <Root
-        data-testid="drawer"
-        onClose={closeDrawer}
-        open={open}
+      <DrawerRoot
         anchor={anchor}
-        PaperProps={{
-          sx: { width: `${width}%` },
-          //@ts-expect-error: Does in fact working, also it only serves for testing.
-          'data-testid': 'drawer-paper',
-        }}
-        ModalProps={{
-          BackdropProps: {
-            //@ts-expect-error: Does in fact working, also it only serves for testing.
-            'data-testid': 'backdrop',
-          },
-        }}
+        open={open}
+        width={width}
+        closeDrawer={closeDrawer}
       >
-        <Fab
-          color="default"
-          sx={(theme) => ({
-            display: { xs: 'block', md: 'block' },
-            position: 'fixed',
-            top: '1.45em',
-            right: '.75em',
-            width: '2.5em',
-            height: '2.5em',
-            bgcolor: `${theme.palette.grey[300]}95`,
-          })}
-          size={'small'}
-          onClick={closeDrawer}
-        >
-          <Close
-            data-testid="closeButton"
-            color="success"
-            sx={{ mb: '-.3em' }}
-          />
-        </Fab>
+        <CloseDrawerButton closeDrawer={closeDrawer} />
         {content}
-      </Root>
+      </DrawerRoot>
     </DrawerContext.Provider>
   )
 }

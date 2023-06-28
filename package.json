@@ -12,7 +12,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "prebuild": "rimraf ./lib",
+    "prebuild": "rimraf ./lib && eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "build": "tsc && jest",
     "start": "webpack serve --open --mode development",
     "test": "jest",
