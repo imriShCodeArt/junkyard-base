@@ -39,7 +39,7 @@ module.exports = (env, options) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'public', 'index.html'),
+        template: path.resolve(__dirname, 'dev', 'index.html'),
       }),
     ],
     devServer: {
