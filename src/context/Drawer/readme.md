@@ -10,9 +10,9 @@
 <!-- Example usage of openDrawer function -->
 openDrawer(
   <div>Your Content Here</div>, // content  DEFAULT: NavBar
-  'right', // OPTIONAL: anchor position     DEFAULT: 'left'
-  70, // OPTIONAL: width                    DEFAULT: 70
-  false // OPTIONAL: backdropClickClose      DEFAULT: true
+  'right', // anchor position(optional)     DEFAULT: 'left'
+  70, // width(optional)                    DEFAULT: 70
+  false // backdropClickClose(optional)     DEFAULT: true
 )
 ```
 
