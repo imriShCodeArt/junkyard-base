@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
+import DialogProvider from '../Dialog'
 import DialogContext from './Context'
-import DialogProvider from './Dialog'
 
 describe('Dialog', () => {
   it('should open when openButton is clicked', async () => {

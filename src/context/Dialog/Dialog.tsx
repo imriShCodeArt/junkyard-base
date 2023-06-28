@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react'
-import Context from './Context'
-import { DialogActions, DialogState } from './types'
 import CloseDialogButton from './ui/CloseDialogButton'
 import DialogRoot from './ui/DialogRoot'
+import Context from './utils/Context'
+import { DialogActions, DialogState } from './utils/types'
 
 const Dialog = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)

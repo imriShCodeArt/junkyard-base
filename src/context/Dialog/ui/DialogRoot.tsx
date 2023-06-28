@@ -1,6 +1,6 @@
 import Root from '@mui/material/Dialog'
 import { ReactNode } from 'react'
-import { DialogState } from '../types'
+import { DialogState } from '../utils/types'
 
 interface DialogRootProps {
   state: DialogState
