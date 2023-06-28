@@ -2,8 +2,8 @@
 import { ReactNode, useState } from 'react'
 
 import { useTheme } from '@mui/system'
-import DrawerContext from './Context'
-import { Anchor } from './types'
+import DrawerContext from './utils/Context'
+import { Anchor } from './utils/types'
 
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'

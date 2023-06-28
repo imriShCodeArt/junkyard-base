@@ -2,7 +2,7 @@
 
 import { useContext } from 'react'
 
-import Context from './Context'
+import Context from './utils/Context'
 
 export { default } from './Drawer'
 

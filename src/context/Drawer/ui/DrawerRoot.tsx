@@ -1,6 +1,6 @@
 // src/components/DrawerRoot.tsx
 import Root from '@mui/material/Drawer'
-import { DrawerRootProps } from '../types'
+import { DrawerRootProps } from '../utils/types'
 
 const DrawerRoot = ({
   anchor,

@@ -4,8 +4,8 @@ import React from 'react'
 import '@testing-library/jest-dom'
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import Drawer from '../Drawer' // Change this to your actual path
 import DrawerContext from './Context'
-import Drawer from './Drawer' // Change this to your actual path
 
 describe('Drawer', () => {
   // Initialization test
