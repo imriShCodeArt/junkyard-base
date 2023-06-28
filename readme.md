@@ -16,7 +16,7 @@ or
 <h2>Using the AppShell Component</h2> 
 <p>The AppShell component in this package is a context provider component. It contains the Drawer component and accepts a configuration object via its config prop:</p>
 
-<pre><code class="javascript"><AppShell config={config}>{/* Your app code goes here */}</AppShell></code></pre>
+<code class="javascript"><AppShell config={config}>{/_ Your app code goes here _/}</AppShell></code>
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
 
