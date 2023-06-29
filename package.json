@@ -1,6 +1,6 @@
 {
   "name": "junkyard-base",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Enhance your React development with a comprehensive, modular toolkit, offering optimized solutions for Project-setup, UI-consistency, Performance, Authentication, Internationalization, and more. Leverage pre-configured best practices and cutting-edge features to streamline your process and build superior progressive web applications.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
