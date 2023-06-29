@@ -2,9 +2,9 @@
 <h2>Installation</h2> 
 <p>First, you'll need to install the package into your project. You can do this using npm or yarn:</p>
 
-```javascript
+<pre>
 npm install junkyard-ui`
-```
+</pre>
 
 or
 
