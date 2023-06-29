@@ -2,21 +2,29 @@
 <h2>Installation</h2> 
 <p>First, you'll need to install the package into your project. You can do this using npm or yarn:</p>
 
-`javascriptnpm install junkyard-ui`
+```javascript
+npm install junkyard-ui`
+```
 
 or
 
-`javascriptyarn add junkyard-ui`
+```javascript
+yarn add junkyard-ui`
+```
 
 <h2>Importing Components</h2> 
 <p>You can import the required components from the package as follows:</p>
 
-`javascriptimport { AppShell, useDrawerContext } from 'junkyard-ui'`
+```javascript
+import { AppShell, useDrawerContext } from 'junkyard-ui'`
+```
 
 <h2>Using the AppShell Component</h2> 
 <p>The AppShell component in this package is a context provider component. It contains the Drawer component and accepts a configuration object via its config prop:</p>
 
-`javascript<AppShell config={config}>{/* Your app code goes here */}</AppShell>`
+```javascript
+<AppShell config={config}>{/* Your app code goes here */}</AppShell>`
+```
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
 
