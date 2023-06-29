@@ -32,7 +32,7 @@ import { AppShell, useDrawerContext } from 'junkyard-ui'
 <p>The AppShell component in this package is a context provider component. It contains the Drawer component and accepts a configuration object via its config prop:</p>
 
 ```javascript
-&lt;AppShell config={config}&gt;{/* Your app code goes here */}&lt;/AppShell&gt;
+<AppShell config={config}>{/* Your app code goes here */}</AppShell>
 ```
 
 <p>In your application, you would include your other components inside the AppShell context provider.</p>
@@ -48,9 +48,15 @@ import { AppShell, useDrawerContext } from 'junkyard-ui'
 
 function MyApp() {
   return (
-    &lt;AppShell config={ { /* your drawer config here */ } } &gt;
+    <AppShell
+      config={
+        {
+          /* your drawer config here */
+        }
+      }
+    >
       {/* Your other components go here */}
-    &lt;/AppShell&gt;
+    </AppShell>
   )
 }
 ```
