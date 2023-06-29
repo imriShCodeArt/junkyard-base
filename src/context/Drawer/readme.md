@@ -1,67 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>README</title>
+</head>
+<body>
+
 <h1>Drawer Component Documentation</h1>
 
-<h2>Overview</h2> 
-<p>The Drawer component is a highly customizable, flexible component that can be used to display additional content or options to the user. It can be configured to open from any edge of the screen ('left', 'right', 'top', 'bottom'), and the width can be adjusted as a percentage of the viewport width.</p>
+<h2>Introduction</h2>
+<p>The Drawer component in junkyard-ui is a customizable and versatile sliding panel, typically used for navigation or displaying additional content. It can be anchored to any side of the viewport.</p>
 
-<h2>Configuration</h2> 
-<p>The Drawer component is primarily configured through the use of the openDrawer function, which allows for the setting of the content, anchor position, width, and a flag to close the drawer when clicking on the backdrop. It also allows the application of Material UI props such as 'PaperProps', 'ModalProps', and 'sx' for styling purposes.</p>
-
+<h2>Importing and Using Drawer</h2>
+<p>You can import the Drawer context hook 'useDrawerContext' from the package as follows:</p>
 ```javascript
-// Example usage of openDrawer function
-openDrawer(
-  <div>Your Content Here</div>, // content  DEFAULT: null
-  'right', // anchor position(optional)     DEFAULT: 'left'
-  70, // width(optional)                    DEFAULT: 70
-  false, // backdropClickClose(optional)     DEFAULT: true
+  import { useDrawerContext } from 'junkyard-ui'
+```
+
+<h2>Accessing Drawer Context</h2>
+<p>You can access the state and actions related to the Drawer using the useDrawerContext hook:</p>
+```javascript
+  const { 
+    state: { anchor, content, isOpen, width, backdropClickClose }, 
+    actions: { openDrawer, closeDrawer, setWidth, setContent, setAnchor, setBackdropClickClose }, 
+  } = useDrawerContext()
+```
+
+<h3>Actions</h3>
+<ul>
+  <li>openDrawer: This function opens the drawer. It takes four parameters:
+    <ul>
+      <li>content: The ReactNode to be displayed in the drawer.</li>
+      <li>anchor: Optional. Determines which side of the screen the drawer appears from. It can be 'left', 'right', 'top', or 'bottom'. The default is 'right'.</li>
+      <li>width: Optional. Sets the width of the drawer as a percentage of the screen width. The default is 70.</li>
+      <li>backdropClickClose: Optional. Determines whether clicking outside the drawer will close it. The default is true.</li>
+    </ul>
+  </li>
+  <li>closeDrawer: This function closes the drawer.</li>
+</ul>
+
+<h3>State</h3>
+<ul>
+  <li>isOpen: This boolean value represents whether the drawer is open or not.</li>
+  <li>content: This ReactNode represents the current content of the drawer.</li>
+</ul>
+
+<h2>Example</h2>
+<p>Here's an example of how to use the Drawer and its context in your application:</p>
+```javascript
+  import { Button } from '@mui/material'
+  import { useDrawerContext } from 'junkyard-ui'
+
+function MyComponent() {
+const { actions: { openDrawer }, } = useDrawerContext()
+
+    return (
+      <Button onClick={() => openDrawer(<div>Hello, World!</div>)}> Open Drawer </Button>
+    )
+
+}
+
+function MyApp() {
+return (
+<AppShell config={ { /_ your drawer config here _/ } }>
+<MyComponent />
+</AppShell>
 )
-```
-
-<h2>Design</h2>
-<p>Design of the Drawer and its different parts can be controlled using the 'sx', 'PaperProps' and 'ModalProps' properties. These props accept Material-UI styling objects, allowing for a wide range of customization options. For instance, 'PaperProps' can be used to style the Drawer component, and 'ModalProps' can be used to style the modal that contains the Drawer.</p>
-
-<h2>Context</h2> 
-<p>The Drawer component uses context to manage its state and actions. The context can be accessed and modified through the useDrawerContext hook.</p>
-
-```javascript
-// Usage of useDrawerContext hook
-const { state, actions } = useDrawerContext()
-
-// State
-const { anchor, content, isOpen, width, backdropClickClose } = state
-
-// Actions
-const {
-  openDrawer,
-  closeDrawer,
-  setWidth,
-  setContent,
-  setAnchor,
-  setBackdropClickClose,
-} = actions
-```
-
-<h2>Usage</h2>
-<p>Here is an example usage of the Drawer component:</p>
-
-```javascript
-import { useDrawerContext } from 'junkyard-ui'
-
-const config = {
-  defaultAnchor: 'right',
-  defaultWidth: 70,
-  defaultBackdropClickClose: true,
-  PaperProps: {},
-  ModalProps: {},
-  sx: {},
 }
 
-function MyApp({ children }) {
-  return (
-    <AppShell>
-      <DrawerProvider config={config}>{children}</DrawerProvider>
-    </AppShell>
-  )
-}
 ```
+<p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
+<p>Remember to replace {/* your drawer config here */} with your actual drawer configuration.</p>
 
-<p>Note that the config object is passed as a prop to the DrawerProvider component, which is used inside the AppShell. You can customize it according to your needs.</p>
+</body>
+</html>
+```
