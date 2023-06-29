@@ -1,5 +1,5 @@
-import config from 'assets/myConfig'
 import React from 'react'
+import config from '../../../assets/myConfig'
 // src/context/Drawer/Drawer.tset.ts:
 
 import '@testing-library/jest-dom'
@@ -8,16 +8,14 @@ import Drawer from '../Drawer' // Change this to your actual path
 import DrawerContext from './Context'
 
 const { drawer } = config || {}
-const elm = (
-  <Drawer config={drawer}>
-    <TestComponent />
-  </Drawer>
-)
 describe('Drawer', () => {
-  // Initialization test
   // Check if the drawer opens correctly
   it('should open when openButton is clicked', async () => {
-    render(elm)
+    render(
+      <Drawer {...drawer}>
+        <OpenDrawerFromTheLeftButton />
+      </Drawer>,
+    )
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -28,7 +26,11 @@ describe('Drawer', () => {
 
   // Check if the drawer has the correct width when open
   it('should have correct width when open', async () => {
-    render(elm)
+    render(
+      <Drawer {...config.drawer}>
+        <OpenDrawerFromTheLeftButton />
+      </Drawer>,
+    )
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -40,7 +42,11 @@ describe('Drawer', () => {
 
   // Check if the drawer closes correctly when the backdrop is clicked
   it('should close when backdrop is clicked', async () => {
-    render(elm)
+    render(
+      <Drawer {...drawer}>
+        <OpenDrawerFromTheLeftButton />
+      </Drawer>,
+    )
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -58,7 +64,11 @@ describe('Drawer', () => {
 
   // Check if the drawer closes correctly when the close button is clicked
   it('should close when closeButton is clicked', async () => {
-    render(elm)
+    render(
+      <Drawer {...drawer}>
+        <OpenDrawerFromTheLeftButton />
+      </Drawer>,
+    )
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -75,7 +85,7 @@ describe('Drawer', () => {
   })
 })
 
-function TestComponent() {
+function OpenDrawerFromTheLeftButton() {
   const {
     actions: { openDrawer },
   } = React.useContext(DrawerContext) || { actions: {} }
@@ -110,12 +120,11 @@ function OpenDrawerFromRightButton() {
     </button>
   )
 }
-
 // Check if the drawer opens from the correct anchor position
 it('should open from the correct anchor position', async () => {
   render(
-    <Drawer>
-      <TestComponent />
+    <Drawer {...config.drawer}>
+      <OpenDrawerFromTheLeftButton />
       <OpenDrawerFromRightButton />
     </Drawer>,
   )
@@ -130,28 +139,9 @@ it('should open from the correct anchor position', async () => {
   })
 })
 
-// Check if clicking on the backdrop does not close the drawer when backdropClickClose is false
-function OpenDrawerWithoutBackdropCloseButton() {
-  const {
-    actions: { openDrawer },
-  } = React.useContext(DrawerContext) || { actions: {} }
-
-  if (!openDrawer) {
-    return null
-  }
-
-  return (
-    <button
-      data-testid="openButtonNoBackdropClose"
-      onClick={() => openDrawer(<div>Test content</div>, 'left', 70, false)}
-    >
-      Open Drawer
-    </button>
-  )
-}
 it('should not close when backdrop is clicked and backdropClickClose is false', async () => {
   render(
-    <Drawer>
+    <Drawer {...drawer}>
       <OpenDrawerWithoutBackdropCloseButton />
     </Drawer>,
   )
@@ -188,8 +178,8 @@ function CloseDrawerButton() {
 }
 it('should close when closeDrawer is called', async () => {
   render(
-    <Drawer>
-      <TestComponent />
+    <Drawer {...drawer}>
+      <OpenDrawerFromTheLeftButton />
       <CloseDrawerButton />
     </Drawer>,
   )
@@ -207,3 +197,23 @@ it('should close when closeDrawer is called', async () => {
     expect(testContent).not.toBeVisible()
   })
 })
+
+// Check if clicking on the backdrop does not close the drawer when backdropClickClose is false
+function OpenDrawerWithoutBackdropCloseButton() {
+  const {
+    actions: { openDrawer },
+  } = React.useContext(DrawerContext) || { actions: {} }
+
+  if (!openDrawer) {
+    return null
+  }
+
+  return (
+    <button
+      data-testid="openButtonNoBackdropClose"
+      onClick={() => openDrawer(<div>Test content</div>, 'left', 70, false)}
+    >
+      Open Drawer
+    </button>
+  )
+}

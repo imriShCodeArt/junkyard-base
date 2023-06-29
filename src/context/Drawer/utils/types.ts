@@ -28,12 +28,9 @@ export interface DrawerActions {
 export type CloseDrawerButtonProps = () => void
 
 export interface DrawerRootProps {
-  config: Config
-  anchor: Anchor
-  isOpen: boolean
-  width: number
-  backdropClickClose: boolean
-  content: ReactNode
+  anchor?: Anchor
+  isOpen?: boolean
+  width?: number
   closeDrawer?: () => void
   children?: ReactNode
   PaperProps?: Partial<PaperProps> // Define a more specific type if you have one
@@ -43,13 +40,14 @@ export interface DrawerRootProps {
 
 export type Anchor = 'left' | 'right' | 'top' | 'bottom'
 
-export interface DrawerProps {
+export type DrawerProps = Partial<{
   children: ReactNode
-  config: Config
-}
-
-type Config = {
-  defaultAnchor?: Anchor
-  defaultWidth?: number
-  defaultBackdropClickClose?: boolean
-}
+  isOpen: boolean
+  content: ReactNode
+  anchor?: 'left' | 'right' | 'top' | 'bottom'
+  width?: number
+  backdropClickClose?: boolean
+  PaperProps?: Partial<PaperProps> // Define a more specific type if you have one
+  ModalProps?: Partial<ModalProps> // Define a more specific type if you have one
+  sx?: Partial<SxProps> // Define a more specific type if you have one}
+}>

@@ -1,5 +1,5 @@
 declare module 'junkyard-base/lib' {
-  import { ReactNode } from 'react'
+  import React, { ReactNode } from 'react'
 
   export interface AppShellProps {
     children: ReactNode

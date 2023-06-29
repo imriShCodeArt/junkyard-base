@@ -1,7 +1,8 @@
+import { useContext } from 'react'
+
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import React from 'react'
-import DialogProvider from '../Dialog'
+import DialogProvider from '../'
 import DialogContext from './Context'
 
 describe('Dialog', () => {
@@ -56,7 +57,7 @@ describe('Dialog', () => {
 function TestComponent() {
   const {
     actions: { openDialog },
-  } = React.useContext(DialogContext) || { actions: {} }
+  } = useContext(DialogContext) || { actions: {} }
 
   if (!openDialog) {
     return null
@@ -77,7 +78,7 @@ function TestComponent() {
 function CloseDialogButton() {
   const {
     actions: { closeDialog },
-  } = React.useContext(DialogContext) || { actions: {} }
+  } = useContext(DialogContext) || { actions: {} }
 
   if (!closeDialog) {
     return null

@@ -7,7 +7,7 @@ import { DialogActions, DialogState } from './utils/types'
 const Dialog = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [content, setContent] = useState<ReactNode>(<></>)
-  const [width, setWidth] = useState(80)
+  const [width, setWidth] = useState(70)
   const [fullScreen, setFullScreen] = useState(false)
   const [scroll, setScroll] = useState<'paper' | 'body'>('paper')
   const [backdropClickClose, setBackdropClickClose] = useState(true)

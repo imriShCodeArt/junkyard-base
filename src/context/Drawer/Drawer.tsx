@@ -1,10 +1,11 @@
 // (...)/Drawer/Drawer.tsx
+
 import { useTheme } from '@mui/system'
 import { ReactNode, useState } from 'react'
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
 import DrawerContext from './utils/Context'
-import { Anchor, DrawerRootProps } from './utils/types'
+import { Anchor, DrawerProps } from './utils/types'
 
 /**
  * This is a customizable Drawer component.
@@ -17,22 +18,18 @@ import { Anchor, DrawerRootProps } from './utils/types'
  *
  * closeDrawer function can be used to close the drawer.
  */
-const Drawer = ({
-  children,
-  config,
-}: {
-  children: ReactNode
-  config: Partial<DrawerRootProps>
-}) => {
+const Drawer = ({ children, ...config }: DrawerProps) => {
   const theme = useTheme()
   const { direction } = theme || {}
 
   const [anchor, setAnchor] = useState<Anchor>(
     config.anchor || (direction === 'rtl' ? 'left' : 'right'),
   )
-  const [content, setContent] = useState<ReactNode>(config.content || <></>)
-  const [isOpen, setIsOpen] = useState(config.isOpen || false)
-  const [width, setWidth] = useState<number>(config.width || 80)
+  const [content, setContent] = useState<ReactNode>(
+    config.content || <>CONTENT</>,
+  )
+  const [isOpen, setIsOpen] = useState(true)
+  const [width, setWidth] = useState<number>(config.width || 70)
   const [backdropClickClose, setBackdropClickClose] = useState<boolean>(
     config.backdropClickClose || true,
   )
@@ -45,7 +42,7 @@ const Drawer = ({
   ) => {
     setContent(content)
     anchor && setAnchor(anchor)
-    setWidth(width || 80)
+    setWidth(width || 70)
     backdropClickClose && setBackdropClickClose(backdropClickClose)
     setIsOpen(true)
   }
@@ -82,14 +79,7 @@ const Drawer = ({
         PaperProps={{ ...config.PaperProps }}
         ModalProps={{ ...config.ModalProps }}
         sx={{ ...config.sx }}
-        content={<></>}
-        backdropClickClose={false}
-        config={{
-          defaultAnchor: undefined,
-          defaultWidth: undefined,
-          defaultBackdropClickClose: undefined,
-        }}
-        width={0}
+        width={width}
       >
         <CloseDrawerButton closeDrawer={closeDrawer} />
         {content}

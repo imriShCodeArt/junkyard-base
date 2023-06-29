@@ -2,6 +2,7 @@ const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = (env, options) => {
   const isProduction = options.mode === 'production'
@@ -40,6 +41,9 @@ module.exports = (env, options) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'dev', 'index.html'),
+      }),
+      new webpack.ProvidePlugin({
+        React: 'react',
       }),
     ],
     devServer: {

@@ -1,7 +1,9 @@
+// <root>/dev/index.tsx:
 import React from 'react'
 
 import { createRoot } from 'react-dom/client'
 import { AppShell } from '../src'
+import myConfig from '../src/assets/myConfig'
 
 const element = document.getElementById('container')
 
@@ -13,8 +15,8 @@ const root = createRoot(element)
 
 root.render(
   <div>
-    <AppShell>
-      <>HELLO</>
+    <AppShell config={myConfig}>
+      <>Hello</>
     </AppShell>
   </div>,
 )

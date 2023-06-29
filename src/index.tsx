@@ -1,8 +1,9 @@
-import myConfig from 'assets/myConfig'
-import DrawerProvider, { useDrawerContext } from 'context/Drawer'
 import { ReactNode } from 'react'
-import { ConfigProps } from 'types'
+import myConfig from './assets/myConfig'
 import { useDialogContext } from './context/Dialog'
+import DialogProvider from './context/Dialog/Dialog'
+import DrawerProvider, { useDrawerContext } from './context/Drawer'
+import { ConfigProps } from './types'
 
 export const AppShell = ({
   children,
@@ -12,13 +13,15 @@ export const AppShell = ({
   config: ConfigProps | null
 }) => {
   const { drawer } = config || myConfig || {}
-  if (drawer) {
-    return null
-  }
-  return <DrawerProvider config={drawer}>{children}</DrawerProvider>
+  return (
+    <DrawerProvider {...drawer}>
+      <DialogProvider>{children}</DialogProvider>
+    </DrawerProvider>
+  )
 }
 
 const drawerContext = useDrawerContext
 const dialogContext = useDialogContext
 
+// export { drawerContext }
 export { dialogContext, drawerContext }
