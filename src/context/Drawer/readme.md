@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>README</title>
-</head>
-<body>
-
 <h1>Drawer Component Documentation</h1>
 
 <h2>Introduction</h2>
@@ -71,7 +63,4 @@ return (
 ```
 <p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
 <p>Remember to replace {/* your drawer config here */} with your actual drawer configuration.</p>
-
-</body>
-</html>
 ```
