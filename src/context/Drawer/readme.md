@@ -39,6 +39,7 @@
 
 <h2>Example</h2>
 <p>Here's an example of how to use the Drawer and its context in your application:</p>
+
 ```javascript
   import { Button } from '@mui/material'
   import { useDrawerContext } from 'junkyard-ui'
@@ -59,8 +60,7 @@ return (
 </AppShell>
 )
 }
-
 ```
+
 <p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
 <p>Remember to replace {/* your drawer config here */} with your actual drawer configuration.</p>
-```
