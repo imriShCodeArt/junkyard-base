@@ -1,39 +1,57 @@
+import { ModalProps, PaperProps, SxProps } from '@mui/material'
+import { ReactNode } from 'react'
+
 // Drawer.d.ts
 declare module 'path-to-your-drawer-folder/Drawer' {
-  import { ReactNode } from 'react'
+  export type Anchor = 'left' | 'right' | 'top' | 'bottom'
 
-  // Define the DrawerProps type
-  export interface DrawerProps {
-    children: ReactNode
+  export interface Config {
+    defaultAnchor?: Anchor
+    defaultWidth?: number
+    defaultBackdropClickClose?: boolean
   }
 
-  // Define the DrawerState type
   export interface DrawerState {
-    anchor: 'left' | 'right' | 'top' | 'bottom'
-    content: ReactNode
     isOpen: boolean
-    width: number
-    backdropClickClose: boolean
+    content: ReactNode
+    anchor?: Anchor
+    width?: number
+    backdropClickClose?: boolean
   }
 
-  // Define the DrawerActions type
   export interface DrawerActions {
     openDrawer: (
       content: ReactNode,
-      anchor?: 'left' | 'right' | 'top' | 'bottom',
+      anchor?: Anchor,
       width?: number,
       backdropClickClose?: boolean,
     ) => void
     closeDrawer: () => void
-    setContent: React.Dispatch<React.SetStateAction<ReactNode>>
-    setWidth: React.Dispatch<React.SetStateAction<number>>
-    setAnchor: React.Dispatch<
-      React.SetStateAction<'left' | 'right' | 'top' | 'bottom'>
-    >
-    setBackdropClickClose: React.Dispatch<React.SetStateAction<boolean>>
+    setWidth?: React.Dispatch<React.SetStateAction<number>>
+    setContent?: React.Dispatch<React.SetStateAction<ReactNode>>
+    setAnchor?: React.Dispatch<React.SetStateAction<Anchor>>
+    setBackdropClickClose?: React.Dispatch<React.SetStateAction<boolean>>
+  }
+
+  export interface DrawerRootProps {
+    config?: Config
+    anchor: Anchor
+    isOpen: boolean
+    width: number
+    backdropClickClose: boolean
+    content: ReactNode
+    closeDrawer?: () => void
+    children?: ReactNode
+    PaperProps?: Partial<PaperProps>
+    ModalProps?: Partial<ModalProps>
+    sx?: Partial<SxProps>
+  }
+
+  export interface DrawerProps {
+    children: ReactNode
+    config: Partial<DrawerRootProps>
   }
 
   const Drawer: React.FC<DrawerProps>
-
   export default Drawer
 }

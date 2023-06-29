@@ -1,12 +1,10 @@
 // (...)/Drawer/Drawer.tsx
-import { ReactNode, useState } from 'react'
-
 import { useTheme } from '@mui/system'
-import DrawerContext from './utils/Context'
-import { Anchor } from './utils/types'
-
+import { ReactNode, useState } from 'react'
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
+import DrawerContext from './utils/Context'
+import { Anchor, DrawerRootProps } from './utils/types'
 
 /**
  * This is a customizable Drawer component.
@@ -19,17 +17,25 @@ import DrawerRoot from './ui/DrawerRoot'
  *
  * closeDrawer function can be used to close the drawer.
  */
-
-const Drawer = ({ children }: { children: ReactNode }) => {
+const Drawer = ({
+  children,
+  config,
+}: {
+  children: ReactNode
+  config: Partial<DrawerRootProps>
+}) => {
   const theme = useTheme()
   const { direction } = theme || {}
+
   const [anchor, setAnchor] = useState<Anchor>(
-    direction === 'rtl' ? 'left' : 'right',
+    config.anchor || (direction === 'rtl' ? 'left' : 'right'),
   )
-  const [content, setContent] = useState<ReactNode>()
-  const [isOpen, setIsOpen] = useState(false)
-  const [width, setWidth] = useState(80)
-  const [backdropClickClose, setBackdropClickClose] = useState(true)
+  const [content, setContent] = useState<ReactNode>(config.content || <></>)
+  const [isOpen, setIsOpen] = useState(config.isOpen || false)
+  const [width, setWidth] = useState<number>(config.width || 80)
+  const [backdropClickClose, setBackdropClickClose] = useState<boolean>(
+    config.backdropClickClose || true,
+  )
 
   const openDrawer = (
     content: ReactNode,
@@ -39,7 +45,7 @@ const Drawer = ({ children }: { children: ReactNode }) => {
   ) => {
     setContent(content)
     anchor && setAnchor(anchor)
-    setWidth(width)
+    setWidth(width || 80)
     backdropClickClose && setBackdropClickClose(backdropClickClose)
     setIsOpen(true)
   }
@@ -63,15 +69,27 @@ const Drawer = ({ children }: { children: ReactNode }) => {
       setBackdropClickClose,
     },
   }
+
   const { state, actions } = drawerValue
+
   return (
     <DrawerContext.Provider value={{ actions, state }}>
       {children}
       <DrawerRoot
         anchor={anchor}
         isOpen={isOpen}
-        width={width}
         closeDrawer={closeDrawer}
+        PaperProps={{ ...config.PaperProps }}
+        ModalProps={{ ...config.ModalProps }}
+        sx={{ ...config.sx }}
+        content={<></>}
+        backdropClickClose={false}
+        config={{
+          defaultAnchor: undefined,
+          defaultWidth: undefined,
+          defaultBackdropClickClose: undefined,
+        }}
+        width={0}
       >
         <CloseDrawerButton closeDrawer={closeDrawer} />
         {content}

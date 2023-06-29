@@ -1,4 +1,5 @@
-// src/components/DrawerRoot.tsx
+// (...)/Drawer/ui/DrawerRoot.tsx:
+import { ModalProps, PaperProps, SxProps } from '@mui/material'
 import Root from '@mui/material/Drawer'
 import { DrawerRootProps } from '../utils/types'
 
@@ -8,9 +9,15 @@ const DrawerRoot = ({
   width,
   closeDrawer,
   children,
-}: DrawerRootProps) => {
+  ...rest
+}: DrawerRootProps & {
+  PaperProps: Partial<PaperProps>
+  ModalProps: Partial<ModalProps>
+  sx: Partial<SxProps>
+}) => {
   return (
     <Root
+      {...rest}
       data-testid="drawer"
       onClose={closeDrawer}
       open={isOpen}

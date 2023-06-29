@@ -1,21 +1,23 @@
+import config from 'assets/myConfig'
 import React from 'react'
 // src/context/Drawer/Drawer.tset.ts:
 
 import '@testing-library/jest-dom'
-
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import Drawer from '../Drawer' // Change this to your actual path
 import DrawerContext from './Context'
 
+const { drawer } = config || {}
+const elm = (
+  <Drawer config={drawer}>
+    <TestComponent />
+  </Drawer>
+)
 describe('Drawer', () => {
   // Initialization test
   // Check if the drawer opens correctly
   it('should open when openButton is clicked', async () => {
-    render(
-      <Drawer>
-        <TestComponent />
-      </Drawer>,
-    )
+    render(elm)
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -26,11 +28,7 @@ describe('Drawer', () => {
 
   // Check if the drawer has the correct width when open
   it('should have correct width when open', async () => {
-    render(
-      <Drawer>
-        <TestComponent />
-      </Drawer>,
-    )
+    render(elm)
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -42,11 +40,7 @@ describe('Drawer', () => {
 
   // Check if the drawer closes correctly when the backdrop is clicked
   it('should close when backdrop is clicked', async () => {
-    render(
-      <Drawer>
-        <TestComponent />
-      </Drawer>,
-    )
+    render(elm)
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
@@ -64,11 +58,7 @@ describe('Drawer', () => {
 
   // Check if the drawer closes correctly when the close button is clicked
   it('should close when closeButton is clicked', async () => {
-    render(
-      <Drawer>
-        <TestComponent />
-      </Drawer>,
-    )
+    render(elm)
 
     const openButton = screen.getByTestId('openButton')
     fireEvent.click(openButton)
