@@ -5,17 +5,26 @@
 
 <h2>Importing and Using Drawer</h2>
 <p>You can import the Drawer context hook 'useDrawerContext' from the package as follows:</p>
+
 ```javascript
-  import { useDrawerContext } from 'junkyard-ui'
+import { useDrawerContext } from 'junkyard-ui'
 ```
 
 <h2>Accessing Drawer Context</h2>
 <p>You can access the state and actions related to the Drawer using the useDrawerContext hook:</p>
+
 ```javascript
-  const { 
-    state: { anchor, content, isOpen, width, backdropClickClose }, 
-    actions: { openDrawer, closeDrawer, setWidth, setContent, setAnchor, setBackdropClickClose }, 
-  } = useDrawerContext()
+const {
+  state: { anchor, content, isOpen, width, backdropClickClose },
+  actions: {
+    openDrawer,
+    closeDrawer,
+    setWidth,
+    setContent,
+    setAnchor,
+    setBackdropClickClose,
+  },
+} = useDrawerContext()
 ```
 
 <h3>Actions</h3>
