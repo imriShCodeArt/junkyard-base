@@ -2,7 +2,7 @@
 import React from 'react'
 
 import { createRoot } from 'react-dom/client'
-import { AppShell } from '../src'
+import AppShell from '../src'
 import myConfig from '../src/assets/myConfig'
 
 const element = document.getElementById('container')
@@ -12,6 +12,10 @@ if (!element) {
 }
 
 const root = createRoot(element)
+
+const Component = () => {
+  return <>COMPONENT</>
+}
 
 root.render(
   <div>
