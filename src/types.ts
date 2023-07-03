@@ -1,6 +1,22 @@
-import { DrawerRootProps } from 'context/Drawer/utils/types'
+import { DefaultTheme } from '@mui/styles/DefaultTheme'
 
-export type ConfigProps = {
-  drawer: DrawerRootProps
-  // dialog: { actions: DialogActions; state: DialogState }
+export interface IAppShellProps {
+  theme?: DefaultTheme // For MUI ThemeProvider
+  drawer?: boolean // For DrawerProvider
+  dialog?: boolean // For DialogProvider
+  dropMenu?: boolean // For DropMenuProvider
+  auth0?: AuthProviderProps // For AuthProvider, this would include necessary props such as domain, clientId etc.
+  notifications?: boolean // For NotificationsProvider, includes necessary props
+  messages?: boolean // For MessagesProvider, includes necessary props
+  locale?: string // For LanguageProvider
+}
+
+export interface AuthProviderProps {
+  DOMAIN: string
+  CLIENT_ID: string
+  CLIENT_SECRET: string
+  BASE_URL: string
+  ISSUER_BASE_URL: string
+  SECRET: string
+  AUDIENCE: string
 }

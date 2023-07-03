@@ -1,11 +1,15 @@
 // (...)/Drawer/Drawer.tsx
-
 import { useTheme } from '@mui/system'
+import { useConfigContext } from 'context/Config'
 import { ReactNode, useState } from 'react'
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
 import DrawerContext from './utils/Context'
-import { Anchor, DrawerProps } from './utils/types'
+import { Anchor } from './utils/types'
+
+export type DrawerProps = Partial<{
+  children: ReactNode
+}>
 
 /**
  * This is a customizable Drawer component.
@@ -18,20 +22,32 @@ import { Anchor, DrawerProps } from './utils/types'
  *
  * closeDrawer function can be used to close the drawer.
  */
-const Drawer = ({ children, ...config }: DrawerProps) => {
+const Drawer = ({ children }: DrawerProps) => {
   const theme = useTheme()
+  const {
+    drawer: { ...config },
+  } = useConfigContext() || {}
+  const {
+    defaultAnchor = 'left',
+    defaultContent,
+    defaultWidth,
+    defaultBackdropClickClose,
+    PaperProps,
+    ModalProps,
+    sx,
+  } = config || {}
   const { direction } = theme || {}
 
   const [anchor, setAnchor] = useState<Anchor>(
-    config.anchor || (direction === 'rtl' ? 'left' : 'right'),
+    defaultAnchor || (direction === 'rtl' ? 'left' : 'right'),
   )
   const [content, setContent] = useState<ReactNode>(
-    config.content || <>CONTENT</>,
+    defaultContent || <>CONTENT</>,
   )
   const [isOpen, setIsOpen] = useState(true)
-  const [width, setWidth] = useState<number>(config.width || 70)
+  const [width, setWidth] = useState<number>(defaultWidth || 70)
   const [backdropClickClose, setBackdropClickClose] = useState<boolean>(
-    config.backdropClickClose || true,
+    defaultBackdropClickClose || true,
   )
 
   const openDrawer = (
@@ -76,9 +92,9 @@ const Drawer = ({ children, ...config }: DrawerProps) => {
         anchor={anchor}
         isOpen={isOpen}
         closeDrawer={closeDrawer}
-        PaperProps={{ ...config.PaperProps }}
-        ModalProps={{ ...config.ModalProps }}
-        sx={{ ...config.sx }}
+        PaperProps={{ ...PaperProps }}
+        ModalProps={{ ...ModalProps }}
+        sx={{ ...sx }}
         width={width}
       >
         <CloseDrawerButton closeDrawer={closeDrawer} />

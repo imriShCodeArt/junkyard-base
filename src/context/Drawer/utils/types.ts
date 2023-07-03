@@ -40,14 +40,13 @@ export interface DrawerRootProps {
 
 export type Anchor = 'left' | 'right' | 'top' | 'bottom'
 
-export type DrawerProps = Partial<{
-  children: ReactNode
-  isOpen: boolean
-  content: ReactNode
-  anchor?: 'left' | 'right' | 'top' | 'bottom'
-  width?: number
-  backdropClickClose?: boolean
+export interface IDrawerProps {
+  defaultIsOpen: boolean
+  defaultContent: ReactNode
+  defaultAnchor?: 'left' | 'right' | 'top' | 'bottom'
+  defaultWidth?: number
+  defaultBackdropClickClose?: boolean
   PaperProps?: Partial<PaperProps> // Define a more specific type if you have one
   ModalProps?: Partial<ModalProps> // Define a more specific type if you have one
   sx?: Partial<SxProps> // Define a more specific type if you have one}
-}>
+}
