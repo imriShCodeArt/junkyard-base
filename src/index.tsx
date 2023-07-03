@@ -1,27 +1,30 @@
 import { ReactNode } from 'react'
+
 import myConfig from './assets/myConfig'
+
+import ConfigProvider from './context/Config/Config'
 import { useDialogContext } from './context/Dialog'
 import DialogProvider from './context/Dialog/Dialog'
 import DrawerProvider, { useDrawerContext } from './context/Drawer'
-import { ConfigProps } from './types'
 
-export const AppShell = ({
+import { IAppShellProps } from './types'
+
+const AppShell = ({
   children,
-  config,
+  ...config
 }: {
-  children: ReactNode
-  config: ConfigProps | null
+  children: (ReactNode & IAppShellProps) | null
 }) => {
-  const { drawer } = config || myConfig || {}
+  const { drawer } = config || myConfig || { drawer: {} }
   return (
-    <DrawerProvider {...drawer}>
-      <DialogProvider>{children}</DialogProvider>
-    </DrawerProvider>
+    <ConfigProvider>
+      <DrawerProvider {...drawer}>
+        <DialogProvider>{children}</DialogProvider>
+      </DrawerProvider>
+    </ConfigProvider>
   )
 }
 
-const drawerContext = useDrawerContext
-const dialogContext = useDialogContext
+export default AppShell
 
-// export { drawerContext }
-export { dialogContext, drawerContext }
+export { useDialogContext, useDrawerContext }
