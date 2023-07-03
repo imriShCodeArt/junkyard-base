@@ -40,13 +40,15 @@
   },
   "homepage": "https://github.com/imriShCodeArt/junkyard-base#readme",
   "dependencies": {
+    "@auth0/nextjs-auth0": "auth0/nextjs-auth0",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.5",
     "@mui/styles": "^5.13.2",
-    "@types/react-dom": "^18.2.6"
+    "@types/react-dom": "^18.2.6",
+    "react-intl": "^6.4.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.5",
