@@ -15,6 +15,7 @@ const AppShell = ({
 }: {
   children: (ReactNode & IAppShellProps) | null
 }) => {
+  console.log('hello world')
   const { drawer } = config || myConfig || { drawer: {} }
   return (
     <ConfigProvider>
