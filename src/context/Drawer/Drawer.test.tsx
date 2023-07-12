@@ -1,11 +1,11 @@
 import React from 'react'
-import config from '../../../assets/myConfig'
+import config from '../../assets/myConfig'
 // src/context/Drawer/Drawer.tset.ts:
 
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import Drawer from '../Drawer' // Change this to your actual path
-import DrawerContext from './Context'
+import Drawer from './Drawer' // Change this to your actual path
+import DrawerContext from './Drawer.Context'
 
 const { drawer } = config || {}
 describe('Drawer', () => {

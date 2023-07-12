@@ -3,10 +3,10 @@ import { ReactNode } from 'react'
 
 // Drawer.d.ts
 declare module 'path-to-your-drawer-folder/Drawer' {
-  export type Anchor = 'left' | 'right' | 'top' | 'bottom'
+  export type DrawerAnchorProp = 'left' | 'right' | 'top'
 
   export interface Config {
-    defaultAnchor?: Anchor
+    defaultAnchor?: DrawerAnchorProp
     defaultWidth?: number
     defaultBackdropClickClose?: boolean
   }
@@ -14,7 +14,7 @@ declare module 'path-to-your-drawer-folder/Drawer' {
   export interface DrawerState {
     isOpen: boolean
     content: ReactNode
-    anchor?: Anchor
+    anchor?: DrawerAnchorProp
     width?: number
     backdropClickClose?: boolean
   }
@@ -22,20 +22,20 @@ declare module 'path-to-your-drawer-folder/Drawer' {
   export interface DrawerActions {
     openDrawer: (
       content: ReactNode,
-      anchor?: Anchor,
+      anchor?: DrawerAnchorProp,
       width?: number,
       backdropClickClose?: boolean,
     ) => void
     closeDrawer: () => void
     setWidth?: React.Dispatch<React.SetStateAction<number>>
     setContent?: React.Dispatch<React.SetStateAction<ReactNode>>
-    setAnchor?: React.Dispatch<React.SetStateAction<Anchor>>
+    setAnchor?: React.Dispatch<React.SetStateAction<DrawerAnchorProp>>
     setBackdropClickClose?: React.Dispatch<React.SetStateAction<boolean>>
   }
 
   export interface DrawerRootProps {
     config?: Config
-    anchor: Anchor
+    anchor: DrawerAnchorProp
     isOpen: boolean
     width: number
     backdropClickClose: boolean

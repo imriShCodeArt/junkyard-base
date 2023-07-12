@@ -1,11 +1,11 @@
 // src/context/Drawer/Context.tsx:
 
 import { createContext } from 'react'
-import { DrawerActions, DrawerState } from './types'
+import { IDrawerActions, IDrawerState } from './Drawer.types'
 
 const DrawerContext = createContext<{
-  state: DrawerState
-  actions: DrawerActions
+  state: IDrawerState
+  actions: IDrawerActions
 } | null>(null)
 
 export default DrawerContext

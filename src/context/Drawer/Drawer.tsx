@@ -1,15 +1,10 @@
 // (...)/Drawer/Drawer.tsx
 import { useTheme } from '@mui/system'
-import { useConfigContext } from 'context/Config'
-import { ReactNode, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
+import DrawerContext from './Drawer.Context'
+import { DrawerAnchorProp, IDrawerProps } from './Drawer.types'
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
-import DrawerContext from './utils/Context'
-import { Anchor } from './utils/types'
-
-export type DrawerProps = Partial<{
-  children: ReactNode
-}>
 
 /**
  * This is a customizable Drawer component.
@@ -22,11 +17,11 @@ export type DrawerProps = Partial<{
  *
  * closeDrawer function can be used to close the drawer.
  */
-const Drawer = ({ children }: DrawerProps) => {
+const Drawer: FC<IDrawerProps> = ({ children }) => {
   const theme = useTheme()
-  const {
-    drawer: { ...config },
-  } = useConfigContext() || {}
+  // const {
+  //   drawer: { ...drawer },
+  // } = useConfigContext() || {}
   const {
     defaultAnchor = 'left',
     defaultContent,
@@ -35,10 +30,20 @@ const Drawer = ({ children }: DrawerProps) => {
     PaperProps,
     ModalProps,
     sx,
-  } = config || {}
+  } = {
+    ...{
+      defaultAnchor: 'left',
+      defaultContent: <></>,
+      defaultWidth: 70,
+      defaultBackdropClickClose: false,
+      PaperProps: {},
+      ModalProps: {},
+      sx: {},
+    },
+  }
   const { direction } = theme || {}
 
-  const [anchor, setAnchor] = useState<Anchor>(
+  const [anchor, setAnchor] = useState<DrawerAnchorProp>(
     defaultAnchor || (direction === 'rtl' ? 'left' : 'right'),
   )
   const [content, setContent] = useState<ReactNode>(
@@ -52,7 +57,7 @@ const Drawer = ({ children }: DrawerProps) => {
 
   const openDrawer = (
     content: ReactNode,
-    anchor: 'left' | 'right' | 'top' | 'bottom' = 'right',
+    anchor: 'left' | 'right' | 'top' = 'right',
     width = 70,
     backdropClickClose = true,
   ) => {

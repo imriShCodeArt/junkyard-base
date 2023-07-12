@@ -1,29 +1,32 @@
 // (...)/Drawer/ui/DrawerRoot.tsx:
-import { ModalProps, PaperProps, SxProps } from '@mui/material'
 import Root from '@mui/material/Drawer'
-import { DrawerRootProps } from '../utils/types'
+import { IDrawerRootProps } from '../Drawer.types'
 
 const DrawerRoot = ({
-  anchor,
-  isOpen,
-  width,
-  closeDrawer,
-  children,
-  ...rest
-}: DrawerRootProps & {
-  PaperProps: Partial<PaperProps>
-  ModalProps: Partial<ModalProps>
-  sx: Partial<SxProps>
-}) => {
+  anchor = 'left',
+  isOpen = false,
+  width = 100,
+  closeDrawer = () => ({}),
+  children = null,
+  ModalProps,
+  PaperProps,
+  sx,
+}: IDrawerRootProps) => {
+  // const { ModalProps, PaperProps } = rest || {
+  //   ModalProps: {},
+  //   PaperProps: {},
+  //   sx: {},
+  // }
   return (
     <Root
-      {...rest}
       data-testid="drawer"
       onClose={closeDrawer}
       open={isOpen}
       anchor={anchor}
+      sx={sx || {}}
       PaperProps={{
         sx: { width: `${width}%` },
+        ...PaperProps,
         //@ts-expect-error: Does in fact working, also it only serves for testing.
         'data-testid': 'drawer-paper',
       }}
@@ -32,6 +35,7 @@ const DrawerRoot = ({
           //@ts-expect-error: Does in fact working, also it only serves for testing.
           'data-testid': 'backdrop',
         },
+        ...ModalProps,
       }}
     >
       {children}

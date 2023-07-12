@@ -1,34 +1,36 @@
-// (...)/Drawer/utils/types.ts:
+// (...)/Drawer/Drawer.types.ts:
 
 import { ModalProps, PaperProps, SxProps } from '@mui/material'
 import { Dispatch, ReactNode, SetStateAction } from 'react'
 
-export interface DrawerState {
+export type DrawerAnchorProp = 'left' | 'right' | 'top'
+
+export interface IDrawerState {
   isOpen: boolean
   content: ReactNode
-  anchor?: 'left' | 'right' | 'top' | 'bottom'
+  anchor?: DrawerAnchorProp
   width?: number
   backdropClickClose?: boolean
 }
 
-export interface DrawerActions {
+export interface IDrawerActions {
   openDrawer: (
     content: ReactNode,
-    anchor?: 'left' | 'right' | 'top' | 'bottom',
+    anchor?: DrawerAnchorProp,
     width?: number,
     backdropClickClose?: boolean,
   ) => void
   closeDrawer: () => void
   setWidth?: Dispatch<SetStateAction<number>>
   setContent?: Dispatch<SetStateAction<ReactNode>>
-  setAnchor?: Dispatch<SetStateAction<Anchor>>
+  setAnchor?: Dispatch<SetStateAction<DrawerAnchorProp>>
   setBackdropClickClose?: Dispatch<SetStateAction<boolean>>
 }
 
 export type CloseDrawerButtonProps = () => void
 
-export interface DrawerRootProps {
-  anchor?: Anchor
+export interface IDrawerRootProps {
+  anchor?: DrawerAnchorProp
   isOpen?: boolean
   width?: number
   closeDrawer?: () => void
@@ -38,12 +40,14 @@ export interface DrawerRootProps {
   sx?: Partial<SxProps> // Define a more specific type if you have one
 }
 
-export type Anchor = 'left' | 'right' | 'top' | 'bottom'
-
 export interface IDrawerProps {
-  defaultIsOpen: boolean
-  defaultContent: ReactNode
-  defaultAnchor?: 'left' | 'right' | 'top' | 'bottom'
+  children: ReactNode
+}
+
+export interface IDrawerConfig {
+  defaultIsOpen?: boolean
+  defaultContent?: ReactNode
+  defaultAnchor?: DrawerAnchorProp
   defaultWidth?: number
   defaultBackdropClickClose?: boolean
   PaperProps?: Partial<PaperProps> // Define a more specific type if you have one
