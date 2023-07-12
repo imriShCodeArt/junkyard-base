@@ -3,8 +3,9 @@
 import { useContext } from 'react'
 
 import Context from './utils/Context'
+import * as LanguageTypes from './utils/types'
 
-export { default } from './LanguageProvider'
+export { default } from './Language'
 
 export const useLanguage = () => {
   const context = useContext(Context)
@@ -13,3 +14,5 @@ export const useLanguage = () => {
   }
   return context
 }
+
+export { LanguageTypes }

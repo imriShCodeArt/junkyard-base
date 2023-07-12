@@ -12,3 +12,7 @@ export interface ILanguageProviderProps {
   defaultLanguage: string
   messages: Lang[]
 }
+export interface ILanguageProviderConfig {
+  defaultLanguage: string
+  messages: Lang[]
+}
