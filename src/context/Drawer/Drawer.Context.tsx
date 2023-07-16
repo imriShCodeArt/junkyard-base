@@ -1,4 +1,4 @@
-// src/context/Drawer/Context.tsx:
+// src/context/Drawer/Drawer.Context.tsx:
 
 import { createContext } from 'react'
 import { IDrawerActions, IDrawerState } from './Drawer.types'

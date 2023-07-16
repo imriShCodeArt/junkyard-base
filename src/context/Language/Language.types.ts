@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export type Message = {
   description: string
   id: string
@@ -5,14 +7,23 @@ export type Message = {
 }
 
 export type Lang = {
-  ['en']: Message[]
+  [key: string]: Message[]
 }
 
-export interface ILanguageProviderProps {
-  defaultLanguage: string
+export interface ILanguageProps {
+  children: ReactNode
+}
+
+export interface ILanguageConfig {
+  defaultLocale: string
   messages: Lang[]
 }
-export interface ILanguageProviderConfig {
-  defaultLanguage: string
+
+export type ILanguageState = {
+  defaultLocale: string
   messages: Lang[]
+}
+
+export type ILanguageActions = {
+  setLocale: (locale: string) => void
 }

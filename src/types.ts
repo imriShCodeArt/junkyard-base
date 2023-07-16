@@ -1,11 +1,13 @@
 import { DefaultTheme } from '@mui/styles/DefaultTheme'
+import { IDialogConfig } from 'context/Dialog'
+import { IDrawerConfig } from 'context/Drawer'
 import { ReactNode } from 'react'
 
 export interface IAppShellProps {
   children: ReactNode
   theme?: DefaultTheme // For MUI ThemeProvider
-  drawer?: boolean // For DrawerProvider
-  dialog?: boolean // For DialogProvider
+  drawer?: IDrawerConfig // For DrawerProvider
+  dialog?: IDialogConfig // For DialogProvider
   dropMenu?: boolean // For DropMenuProvider
   auth0?: AuthProviderProps // For AuthProvider, this would include necessary props such as domain, clientId etc.
   notifications?: boolean // For NotificationsProvider, includes necessary props

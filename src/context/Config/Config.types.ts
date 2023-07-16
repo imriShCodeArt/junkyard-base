@@ -1,7 +1,7 @@
 import { IDrawerConfig } from '../Drawer'
-import { ILanguageProviderConfig } from '../Language'
+import { ILanguageConfig } from '../Language'
 
 export type IConfigContext = {
   drawer?: IDrawerConfig
-  locale?: ILanguageProviderConfig
+  locale?: ILanguageConfig
 }

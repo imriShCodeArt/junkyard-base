@@ -7,16 +7,6 @@ import { DrawerAnchorProp, IDrawerProps } from './Drawer.types'
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
 
-const defVaule = {
-  defaultAnchor: 'left',
-  defaultContent: <></>,
-  defaultWidth: 70,
-  defaultBackdropClickClose: false,
-  PaperProps: {},
-  ModalProps: {},
-  sx: {},
-}
-
 /**
  * This is a customizable Drawer component.
  *
@@ -41,9 +31,7 @@ const Drawer: FC<IDrawerProps> = ({ children }) => {
     PaperProps,
     ModalProps,
     sx,
-  } = useConfigContext().drawer || {
-    ...defVaule,
-  }
+  } = useConfigContext().drawer || {}
   const { direction } = theme || {}
 
   const dir = direction === 'rtl' ? 'left' : 'right'

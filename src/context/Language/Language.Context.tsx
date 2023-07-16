@@ -1,7 +1,11 @@
-// src/context/Dialog/Context.tsx:
+// src/context/Language/Language.Context.tsx
 
 import { createContext } from 'react'
+import { ILanguageActions, ILanguageState } from './Language.types'
 
-const Context = createContext<null>(null)
+const LanguageContext = createContext<{
+  state: ILanguageState
+  actions: ILanguageActions
+} | null>(null)
 
-export default Context
+export default LanguageContext
