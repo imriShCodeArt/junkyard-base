@@ -1,8 +1,9 @@
 import { ReactNode } from 'react'
-import Context from './utils/Context'
+import myConfig from '../../assets/myConfig'
+import Context from './Config.Context'
 
 const Config = ({ children }: { children: ReactNode }) => {
-  return <Context.Provider value={{}}>{children}</Context.Provider>
+  return <Context.Provider value={myConfig}>{children}</Context.Provider>
 }
 
 export default Config
