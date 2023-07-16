@@ -1,7 +1,7 @@
 // src/context/Dialog/Context.tsx:
 
 import { createContext } from 'react'
-import { IDialogActions, IDialogState } from '../Dialog.types'
+import { IDialogActions, IDialogState } from './Dialog.types'
 
 const Context = createContext<{
   state: IDialogState

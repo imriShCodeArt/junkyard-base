@@ -1,6 +1,5 @@
 import React from 'react'
 import config from '../../assets/myConfig'
-// src/context/Drawer/Drawer.tset.ts:
 
 import '@testing-library/jest-dom'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'

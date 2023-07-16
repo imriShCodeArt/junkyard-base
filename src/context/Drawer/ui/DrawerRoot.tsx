@@ -5,18 +5,13 @@ import { IDrawerRootProps } from '../Drawer.types'
 const DrawerRoot = ({
   anchor = 'left',
   isOpen = false,
-  width = 100,
+  width = 70,
   closeDrawer = () => ({}),
   children = null,
   ModalProps,
   PaperProps,
   sx,
 }: IDrawerRootProps) => {
-  // const { ModalProps, PaperProps } = rest || {
-  //   ModalProps: {},
-  //   PaperProps: {},
-  //   sx: {},
-  // }
   return (
     <Root
       data-testid="drawer"

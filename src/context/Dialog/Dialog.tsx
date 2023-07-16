@@ -1,8 +1,8 @@
 import { FC, ReactNode, useState } from 'react'
+import Context from './Dialog.Context'
 import { IDialogActions, IDialogProps, IDialogState } from './Dialog.types'
 import CloseDialogButton from './ui/CloseDialogButton'
 import DialogRoot from './ui/DialogRoot'
-import Context from './utils/Context'
 
 const Dialog: FC<IDialogProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)

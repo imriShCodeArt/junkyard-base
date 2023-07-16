@@ -1,7 +1,7 @@
 // (...)/Drawer/Drawer.tsx
 import { useTheme } from '@mui/system'
-import { useConfigContext } from 'context/Config'
 import { FC, ReactNode, useState } from 'react'
+import { useConfigContext } from '../Config'
 import DrawerContext from './Drawer.Context'
 import { DrawerAnchorProp, IDrawerProps } from './Drawer.types'
 import CloseDrawerButton from './ui/CloseDrawerButton'

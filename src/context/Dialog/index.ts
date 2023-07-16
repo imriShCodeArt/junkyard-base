@@ -2,7 +2,7 @@
 
 import { useContext } from 'react'
 
-import Context from './utils/Context'
+import Context from './Dialog.Context'
 
 export { default } from './Dialog'
 
