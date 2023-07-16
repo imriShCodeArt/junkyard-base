@@ -1,75 +1,174 @@
-<h1>Drawer Component Documentation</h1>
+# Drawer Component
 
-<h2>Introduction</h2>
-<p>The Drawer component in junkyard-ui is a customizable and versatile sliding panel, typically used for navigation or displaying additional content. It can be anchored to any side of the viewport.</p>
+## Overview
 
-<h2>Importing and Using Drawer</h2>
-<p>You can import the Drawer context hook 'useDrawerContext' from the package as follows:</p>
+The Drawer component is a highly customizable drawer module in a React.js application. It provides a set of interfaces, types, and functions that allow you to interact with the drawer in various ways.
 
-```javascript
-import { useDrawerContext } from 'junkyard-ui'
-```
+## Code
 
-<h2>Accessing Drawer Context</h2>
-<p>You can access the state and actions related to the Drawer using the useDrawerContext hook:</p>
+The main components of the Drawer module are:
 
-```javascript
-const {
-  state: { anchor, content, isOpen, width, backdropClickClose },
-  actions: {
-    openDrawer,
-    closeDrawer,
-    setWidth,
-    setContent,
-    setAnchor,
-    setBackdropClickClose,
-  },
-} = useDrawerContext()
-```
+1. **DrawerAnchorProp**: This type specifies the anchor of the drawer. It can be 'left', 'right', or 'top'.
 
-<h3>Actions</h3>
-<ul>
-  <li>openDrawer: This function opens the drawer. It takes four parameters:
-    <ul>
-      <li>content: The ReactNode to be displayed in the drawer.</li>
-      <li>anchor: Optional. Determines which side of the screen the drawer appears from. It can be 'left', 'right', 'top', or 'bottom'. The default is 'right'.</li>
-      <li>width: Optional. Sets the width of the drawer as a percentage of the screen width. The default is 70.</li>
-      <li>backdropClickClose: Optional. Determines whether clicking outside the drawer will close it. The default is true.</li>
-    </ul>
-  </li>
-  <li>closeDrawer: This function closes the drawer.</li>
-</ul>
+<pre>
+<code>
+export type DrawerAnchorProp = 'left' | 'right' | 'top'
+</code>
+</pre>
 
-<h3>State</h3>
-<ul>
-  <li>isOpen: This boolean value represents whether the drawer is open or not.</li>
-  <li>content: This ReactNode represents the current content of the drawer.</li>
-</ul>
+2. **IDrawerState**: This interface represents the state of the Drawer. It includes properties like isOpen, content, anchor, width, and backdropClickClose.
 
-<h2>Example</h2>
-<p>Here's an example of how to use the Drawer and its context in your application:</p>
+<pre>
+<code>
+export interface IDrawerState {{
+  isOpen: boolean
+  content: ReactNode
+  anchor?: DrawerAnchorProp
+  width?: number
+  backdropClickClose?: boolean
+}}
+</code>
+</pre>
 
-```javascript
-  import { Button } from '@mui/material'
-  import { useDrawerContext } from 'junkyard-ui'
+3. **IDrawerActions**: This interface represents the actions that can be performed on the Drawer. These actions include openDrawer, closeDrawer, setWidth, setContent, setAnchor, and setBackdropClickClose.
 
-function MyComponent() {
-const { actions: { openDrawer }, } = useDrawerContext()
+<pre>
+<code>
+export interface IDrawerActions {{
+  openDrawer: (
+    content: ReactNode,
+    anchor?: DrawerAnchorProp,
+    width?: number,
+    backdropClickClose?: boolean,
+  ) => void
+  closeDrawer: () => void
+  setWidth?: Dispatch<SetStateAction<number>>
+  setContent?: Dispatch<SetStateAction<ReactNode>>
+  setAnchor?: Dispatch<SetStateAction<DrawerAnchorProp>>
+  setBackdropClickClose?: Dispatch<SetStateAction<boolean>>
+}}
+</code>
+</pre>
 
-    return (
-      <Button onClick={() => openDrawer(<div>Hello, World!</div>)}> Open Drawer </Button>
-    )
+4. **CloseDrawerButtonProps**: This type represents the properties of the CloseDrawerButton.
 
-}
+<pre>
+<code>
+export type CloseDrawerButtonProps = () => void
+</code>
+</pre>
 
-function MyApp() {
-return (
-<AppShell config={ { /_ your drawer config here _/ } }>
-<MyComponent />
-</AppShell>
-)
-}
-```
+5. **IDrawerRootProps, IDrawerProps, and IDrawerConfig**: These interfaces represent various properties of the Drawer component.
 
-<p>In the above example, clicking the button in MyComponent will open the drawer with the content "Hello, World!".</p>
-<p>Remember to replace {/* your drawer config here */} with your actual drawer configuration.</p>
+<pre>
+<code>
+export interface IDrawerRootProps {{
+  anchor?: DrawerAnchorProp
+  isOpen?: boolean
+  width?: number
+  closeDrawer?: () => void
+  children?: ReactNode
+  PaperProps?: Partial<PaperProps>
+  ModalProps?: Partial<ModalProps>
+  sx?: Partial<SxProps>
+}}
+
+export interface IDrawerProps {{
+  children: ReactNode
+}}
+
+export interface IDrawerConfig {{
+  defaultIsOpen?: boolean
+  defaultContent?: ReactNode
+  defaultAnchor?: DrawerAnchorProp
+  defaultWidth?: number
+  defaultBackdropClickClose?: boolean
+  PaperProps?: Partial<PaperProps>
+  ModalProps?: Partial<ModalProps>
+  sx?: Partial<SxProps>
+}}
+</code>
+</pre>
+
+6. **Drawer**: This is the main Drawer component that utilizes all of the above types and interfaces. It includes functionality to open and close the drawer, set the content, set the width, set the anchor, and more.
+
+<pre>
+<code>
+const Drawer: FC<IDrawerProps> = ({{
+  const theme = useTheme()
+  const {{
+    defaultAnchor = 'left',
+    defaultContent,
+    defaultWidth,
+    defaultBackdropClickClose,
+    PaperProps,
+    ModalProps,
+    sx,
+  }} = useConfigContext().drawer || {{}}
+  const {{ direction }} = theme || {{}}
+
+  const dir = direction === 'rtl' ? 'left' : 'right'
+
+  const [anchor, setAnchor] = useState<DrawerAnchorProp>(dir || defaultAnchor)
+  const [content, setContent] = useState<ReactNode>(defaultContent || <>CONTENT</>)
+  const [isOpen, setIsOpen] = useState(true)
+  const [width, setWidth] = useState<number>(defaultWidth || 70)
+  const [backdropClickClose, setBackdropClickClose] = useState<boolean>(defaultBackdropClickClose || true)
+
+  const openDrawer = (
+    content: ReactNode,
+    anchor: 'left' | 'right' | 'top' = 'right',
+    width = 70,
+    backdropClickClose = true,
+  ) => {{
+    setContent(content)
+    anchor && setAnchor(anchor)
+    setWidth(width || 70)
+    backdropClickClose && setBackdropClickClose(backdropClickClose)
+    setIsOpen(true)
+  }}
+
+  const closeDrawer = () => setIsOpen(false)
+
+  const drawerValue = {{
+    state: {{
+      anchor,
+      content,
+      isOpen,
+      width,
+      backdropClickClose,
+    }},
+    actions: {{
+      openDrawer,
+      closeDrawer,
+      setWidth,
+      setContent,
+      setAnchor,
+      setBackdropClickClose,
+    }},
+  }}
+
+  const {{ state, actions }} = drawerValue
+
+  return (
+    <DrawerContext.Provider value={{ actions, state }}>
+      {{children}}
+      <DrawerRoot
+        anchor={anchor}
+        isOpen={isOpen}
+        closeDrawer={closeDrawer}
+        PaperProps={{ ...PaperProps }}
+        ModalProps={{ ...ModalProps }}
+        sx={{ ...sx }}
+        width={width}
+      >
+        <CloseDrawerButton closeDrawer={closeDrawer} />
+        {content}
+      </DrawerRoot>
+    </DrawerContext.Provider>
+  )
+}}
+
+export default Drawer
+</code>
+</pre>
