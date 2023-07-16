@@ -1,6 +1,8 @@
 import { DefaultTheme } from '@mui/styles/DefaultTheme'
+import { ReactNode } from 'react'
 
 export interface IAppShellProps {
+  children: ReactNode
   theme?: DefaultTheme // For MUI ThemeProvider
   drawer?: boolean // For DrawerProvider
   dialog?: boolean // For DialogProvider
