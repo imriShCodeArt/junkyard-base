@@ -9,3 +9,5 @@ export { default } from './Dialog'
 export function useDialogContext() {
   return useContext(Context)
 }
+
+export * from './Dialog.types'

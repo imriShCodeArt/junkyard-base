@@ -1,6 +1,7 @@
+import { ModalProps, PaperProps, SxProps } from '@mui/material'
 import { Dispatch, ReactNode, SetStateAction } from 'react'
 
-export interface DialogState {
+export interface IDialogState {
   isOpen: boolean
   content: ReactNode
   width?: number // This can be used to set the width of the Paper in percent
@@ -9,7 +10,7 @@ export interface DialogState {
   backdropClickClose?: boolean // This will determine whether the Dialog closes when the backdrop is clicked
 }
 
-export interface DialogActions {
+export interface IDialogActions {
   openDialog: (
     content: ReactNode,
     width?: number,
@@ -24,4 +25,17 @@ export interface DialogActions {
   setFullScreen?: Dispatch<SetStateAction<boolean>>
   setScroll?: Dispatch<SetStateAction<'paper' | 'body'>>
   setBackdropClickClose?: Dispatch<SetStateAction<boolean>>
+}
+
+export interface IDialogProps {
+  children: ReactNode
+}
+export interface IDialogConfig {
+  defaultIsOpen?: boolean
+  defaultContent?: ReactNode
+  defaultPaperWidth?: number
+  defaultBackdropClickClose?: boolean
+  PaperProps?: Partial<PaperProps> // Define a more specific type if you have one
+  ModalProps?: Partial<ModalProps> // Define a more specific type if you have one
+  sx?: Partial<SxProps> // Define a more specific type if you have one}
 }

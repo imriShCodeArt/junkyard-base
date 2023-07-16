@@ -1,10 +1,10 @@
 import Root from '@mui/material/Dialog'
 import { ReactNode } from 'react'
 import { useDialogContext } from '..'
-import { DialogState } from '../utils/types'
+import { IDialogState } from '../Dialog.types'
 
 interface DialogRootProps {
-  state: DialogState
+  state: IDialogState
   children: ReactNode
   closeDialog?: () => void
 }

@@ -1,10 +1,21 @@
 // (...)/Drawer/Drawer.tsx
 import { useTheme } from '@mui/system'
+import { useConfigContext } from 'context/Config'
 import { FC, ReactNode, useState } from 'react'
 import DrawerContext from './Drawer.Context'
 import { DrawerAnchorProp, IDrawerProps } from './Drawer.types'
 import CloseDrawerButton from './ui/CloseDrawerButton'
 import DrawerRoot from './ui/DrawerRoot'
+
+const defVaule = {
+  defaultAnchor: 'left',
+  defaultContent: <></>,
+  defaultWidth: 70,
+  defaultBackdropClickClose: false,
+  PaperProps: {},
+  ModalProps: {},
+  sx: {},
+}
 
 /**
  * This is a customizable Drawer component.
@@ -30,22 +41,14 @@ const Drawer: FC<IDrawerProps> = ({ children }) => {
     PaperProps,
     ModalProps,
     sx,
-  } = {
-    ...{
-      defaultAnchor: 'left',
-      defaultContent: <></>,
-      defaultWidth: 70,
-      defaultBackdropClickClose: false,
-      PaperProps: {},
-      ModalProps: {},
-      sx: {},
-    },
+  } = useConfigContext().drawer || {
+    ...defVaule,
   }
   const { direction } = theme || {}
 
-  const [anchor, setAnchor] = useState<DrawerAnchorProp>(
-    defaultAnchor || (direction === 'rtl' ? 'left' : 'right'),
-  )
+  const dir = direction === 'rtl' ? 'left' : 'right'
+
+  const [anchor, setAnchor] = useState<DrawerAnchorProp>(dir || defaultAnchor)
   const [content, setContent] = useState<ReactNode>(
     defaultContent || <>CONTENT</>,
   )

@@ -2,8 +2,7 @@
 
 import { useContext } from 'react'
 
-import Context from './utils/Context'
-import * as LanguageTypes from './utils/types'
+import Context from './Language.Context'
 
 export { default } from './Language'
 
@@ -15,4 +14,4 @@ export const useLanguage = () => {
   return context
 }
 
-export { LanguageTypes }
+export * from './Language.types'

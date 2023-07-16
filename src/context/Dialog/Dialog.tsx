@@ -1,10 +1,10 @@
-import { ReactNode, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
+import { IDialogActions, IDialogProps, IDialogState } from './Dialog.types'
 import CloseDialogButton from './ui/CloseDialogButton'
 import DialogRoot from './ui/DialogRoot'
 import Context from './utils/Context'
-import { DialogActions, DialogState } from './utils/types'
 
-const Dialog = ({ children }: { children: ReactNode }) => {
+const Dialog: FC<IDialogProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [content, setContent] = useState<ReactNode>(<></>)
   const [width, setWidth] = useState(70)
@@ -41,7 +41,7 @@ const Dialog = ({ children }: { children: ReactNode }) => {
     setContent(<></>)
   }
 
-  const state: DialogState = {
+  const state: IDialogState = {
     isOpen,
     content,
     width,
@@ -50,7 +50,7 @@ const Dialog = ({ children }: { children: ReactNode }) => {
     backdropClickClose,
   }
 
-  const actions: DialogActions = {
+  const actions: IDialogActions = {
     openDialog,
     closeDialog,
     setContent,

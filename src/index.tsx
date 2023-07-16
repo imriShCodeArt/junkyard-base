@@ -1,6 +1,4 @@
-import { ReactNode } from 'react'
-
-import myConfig from './assets/myConfig'
+import { FC } from 'react'
 
 import ConfigProvider from './context/Config/Config'
 import { useDialogContext } from './context/Dialog'
@@ -9,18 +7,11 @@ import DrawerProvider, { useDrawerContext } from './context/Drawer'
 
 import { IAppShellProps } from './types'
 
-const AppShell = ({
-  children,
-  ...config
-}: {
-  children: (ReactNode & IAppShellProps) | null
-}) => {
-  console.log('hello world')
-  const { drawer } = config || myConfig || { drawer: {} }
+const AppShell: FC<IAppShellProps> = (props) => {
   return (
     <ConfigProvider>
-      <DrawerProvider {...drawer}>
-        <DialogProvider>{children}</DialogProvider>
+      <DrawerProvider>
+        <DialogProvider>{props.children}</DialogProvider>
       </DrawerProvider>
     </ConfigProvider>
   )
