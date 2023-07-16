@@ -6,11 +6,11 @@ This document provides a guide to using the `Drawer` component in your applicati
 
 The `Drawer` component is embedded in the `AppShell` component. You don't have to import the `Drawer` component separately in your app. Instead, you wrap your app with the `AppShell` component.
 
-<pre>
+<code>
 <AppShell drawer={drawerConfig}>
 {/_Your App code_/}
 </AppShell>
-</pre>
+</code>
 
 The `drawer` prop in `AppShell` accepts a configuration object that allows you to set default properties for the `Drawer`. Here's an example of how you can define the `drawerConfig`:
 
