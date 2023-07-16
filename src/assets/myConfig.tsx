@@ -1,16 +1,14 @@
 // src/assets/myConfig.ts
-import { Anchor, DrawerProps } from '../context/Drawer/utils/types'
+import { DrawerAnchorProp, IDrawerConfig } from '../context/Drawer'
 
-const config: { drawer: DrawerProps } = {
+const config: { drawer: IDrawerConfig } = {
   drawer: {
-    anchor: 'right' as Anchor,
-    width: 70,
-    backdropClickClose: true,
-    content: null,
-    isOpen: true,
-    PaperProps: {
-      sx: { minWidth: '80%' },
-    },
+    defaultAnchor: 'right' as DrawerAnchorProp,
+    defaultWidth: 70,
+    defaultBackdropClickClose: true,
+    defaultContent: null,
+    defaultIsOpen: true,
+    PaperProps: {},
   },
 }
 
