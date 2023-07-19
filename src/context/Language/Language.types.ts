@@ -6,7 +6,7 @@ export type Message = {
   defaultMessage: string
 }
 
-export type Lang = {
+export type Messages = {
   [key: string]: Message[]
 }
 
@@ -16,12 +16,12 @@ export interface ILanguageProps {
 
 export interface ILanguageConfig {
   defaultLocale: string
-  messages: Lang[]
+  messages: Messages
 }
 
 export type ILanguageState = {
   defaultLocale: string
-  messages: Lang[]
+  messages: Messages
 }
 
 export type ILanguageActions = {

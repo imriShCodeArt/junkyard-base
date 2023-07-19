@@ -1,0 +1,102 @@
+[
+  {
+    "description": "login",
+    "id": "login",
+    "defaultMessage": "Log In"
+  },
+  {
+    "description": "logout",
+    "id": "logout",
+    "defaultMessage": "Log Out"
+  },
+  {
+    "description": "user name",
+    "id": "username",
+    "defaultMessage": "User Name"
+  },
+  {
+    "description": "email",
+    "id": "email",
+    "defaultMessage": "Email Address"
+  },
+  {
+    "description": "phone",
+    "id": "phone",
+    "defaultMessage": "Phone Number"
+  },
+  {
+    "description": "profilePicture",
+    "id": "profilePicture",
+    "defaultMessage": "Profile Picture"
+  },
+  {
+    "description": "bio",
+    "id": "bio",
+    "defaultMessage": "Bio"
+  },
+  {
+    "description": "dob",
+    "id": "dob",
+    "defaultMessage": "Date of Birth"
+  },
+  {
+    "description": "address",
+    "id": "address",
+    "defaultMessage": "Address"
+  },
+  {
+    "description": "company",
+    "id": "company",
+    "defaultMessage": "Company"
+  },
+  {
+    "description": "jobTitle",
+    "id": "jobTitle",
+    "defaultMessage": "Job Title"
+  },
+  {
+    "description": "profileUpdateSuccess",
+    "id": "profileUpdateSuccess",
+    "defaultMessage": "Your profile has been updated successfully."
+  },
+  {
+    "description": "profileUpdateError",
+    "id": "profileUpdateError",
+    "defaultMessage": "An error occurred while updating your profile. Please try again."
+  },
+  {
+    "description": "fieldRequiredError",
+    "id": "fieldRequiredError",
+    "defaultMessage": "This field is required."
+  },
+  {
+    "description": "save",
+    "id": "save",
+    "defaultMessage": "Save Changes"
+  },
+  {
+    "description": "edit profile",
+    "id": "editProfile",
+    "defaultMessage": "Edit Profile"
+  },
+  {
+    "description": "cancel",
+    "id": "cancel",
+    "defaultMessage": "Cancel"
+  },
+  {
+    "description": "loginSuccess",
+    "id": "loginSuccess",
+    "defaultMessage": "You have been logged in successfully."
+  },
+  {
+    "description": "loginError",
+    "id": "loginError",
+    "defaultMessage": "Login failed. Please try again."
+  },
+  {
+    "description": "logoutSuccess",
+    "id": "logoutSuccess",
+    "defaultMessage": "You have been logged out successfully."
+  }
+]
