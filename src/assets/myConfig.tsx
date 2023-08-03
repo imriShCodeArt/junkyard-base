@@ -1,10 +1,11 @@
 // src/assets/myConfig.ts
-import { ILanguageConfig } from 'context/Language'
-import { DrawerAnchorProp, IDrawerConfig } from '../context/Drawer'
+import { DrawerAnchorProp } from '../context/Drawer'
 
+import { IConfigContext } from 'context/Config'
 import en from './en.json'
 
-const config: { drawer: IDrawerConfig; locale: ILanguageConfig } = {
+const config: IConfigContext = {
+  shelf: { PaperProps: {}, sx: {} },
   drawer: {
     defaultAnchor: 'right' as DrawerAnchorProp,
     defaultWidth: 70,
